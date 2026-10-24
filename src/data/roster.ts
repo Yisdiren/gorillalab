@@ -1,0 +1,1 @@
+export const heroes = ["Ada","Ryuichi Ito","Tyronn","Mireya","Koschevoi","Phoenix","Drake","Flameborne","Xuanming"];
