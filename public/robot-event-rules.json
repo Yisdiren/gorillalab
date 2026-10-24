@@ -1,0 +1,6 @@
+{
+  "version": 1,
+  "enabledEventIds": ["cyber", "warlord"],
+  "verification": "player-verified",
+  "evidence": "Player explicitly confirmed robots are used only in Cyber Gorilla and Gorilla Warlord on 2026-10-24. This verifies event eligibility, not robot combat values or reuse rules."
+}
