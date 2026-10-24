@@ -1,0 +1,1 @@
+import {expect,it} from "vitest";import{validRatio}from"./engine";it("checks troop ratios",()=>expect(validRatio({shield:0,bomber:9,shooter:91})).toBe(true));
