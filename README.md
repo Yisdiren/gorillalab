@@ -456,30 +456,68 @@ metadata and unrecorded combat conditions remain important evidence limitations.
 
 ### Server-time schedule and countdown
 
-The player-confirmed 14-ST-calendar-day rotation starts on 2026-10-26:
-seven event days, then seven off days. The next starts are Nov 9, Nov 23,
-Dec 7 and Dec 21. Order: Space, Wise, Cyber, Primal, Armed, Treasure, Warlord.
-Reset is ST 00:00; appearance is ST 00:30. Off-weeks show a return countdown,
-not an active Gorilla. Reaching a scheduled appearance asks players to confirm
-in game; no disappearance time or attack window is inferred.
+Server Time (ST) and numeric countdowns now work immediately from an absolute
+device timestamp with the evidence-backed fixed default **UTC−02:00**. Browser
+local timezones and daylight saving do not change ST. Reset is ST 00:00 (02:00 UTC),
+and scheduled appearance is ST 00:30 (02:30 UTC): 10 PM / 10:30 PM on the previous
+local day during EDT, or 9 PM / 9:30 PM during EST. The offset remains configurable
+in practice through the optional manual ST override if game-clock rules change.
 
-Use Previous Cycle / Next Cycle or the date picker to inspect another cycle.
-Changing the schedule view never changes the selected generator event or formation.
-Profile/server-scoped controls support custom recurrence anchor, cadence and order,
-manual cycle replacement/delay/cancellation, and individual event dates/times/skips.
-New manual cycles require confirmation for numeric countdowns. Conflicting
-appearance timestamps are rejected. Preferences save only on explicit action;
-existing calibration checkpoints continue separately.
+The confirmed rotation starts 2026-10-26 and repeats every 14 ST calendar days:
+seven event days, then seven off days. Next starts: Nov 9, Nov 23, Dec 7, Dec 21.
+Order: Space, Wise, Cyber, Primal, Armed, Treasure, Warlord. Off-weeks show a return
+countdown, never an active Gorilla. Reaching ST 00:30 says Scheduled appearance
+reached — confirm in game; availability, disappearance and attack windows remain
+unconfirmed. Cycle navigation, manual exceptions and profile/server isolation remain.
 
-The ST timezone/UTC offset remains unverified. Manual full-date/time calibration
-expires after 24 hours (app policy), detects session clock jumps, and can be resynced.
-Across-reload undetected device-clock changes and manual-entry delays remain limitations.
-Version-1 one-off schedules migrate in memory without overwriting preferences;
-the next schedule save/checkpoint writes version 2 at the existing schedule key.
-Disabled-only or empty legacy schedules retain recurrence disabled. Valid shifted
-legacy cycles that conflict with automatic dates are also preserved with recurrence
-disabled and a visible review notice. Recurring order and manual-cycle order
-have separate controls; manual-only navigation follows saved cycles. Profiles,
-formations, progression, ratio experiments and battle history are not rewritten.
+Advanced clock settings contain optional manual ST and independent UTC-reference
+calibration, plus restoration to automatic. A UTC reading can be entered from
+[NIST time.gov](https://www.time.gov/); it is manual entry, not authenticated network
+synchronization. No time API, paid service or new dependency is required. Initial
+accuracy depends on the device clock; session clock jumps are detected and can be
+refreshed. An undetected change across reloads remains possible. Optional manual
+and reference calibrations expire after 24 hours; automatic mode does not expire.
 
-See [recurrence validation and limitations](docs/server-recurrence-audit.md).
+Version-1/2 schedule envelopes migrate in memory to version 3 at the existing key
+without deleting old manual calibrations. Automatic is the migration default;
+users can explicitly re-enable their retained manual reading. The next schedule
+save/checkpoint persists migration. Automatic ticking performs no schedule writes.
+Profiles, formations, progression, ratios, robots and history are not rewritten.
+
+See [automatic clock validation and changed files](docs/automatic-server-clock-audit.md)
+and [rotation review](docs/server-recurrence-audit.md).
+
+### Generator-first layout
+
+The generator now leads with event selection, owned-hero and troop-ratio shortcuts,
+and the Generate action. Formation results sit directly after setup and before
+ratio optimization / Troop Ratio Testing. New generations scroll to results
+(respecting reduced-motion preferences); they do not select different heroes or
+change scoring. The full Server schedule & 14-day rotation panel follows the ratio
+tools and starts collapsed. Its clock, countdown, navigation and advanced settings
+stay mounted and retain their existing functionality. No large schedule or clock
+is shown above the generator.
+
+See [layout validation and limitations](docs/generator-first-layout-audit.md).
+
+### Damage recording and profile history
+
+The optional “Want to improve your Gorilla damage?” tip appears once beneath the
+first three-team formation. Record Damage opens the existing recording interface
+with that formation selected. Opening it saves nothing. History defaults to the
+selected profile; unassigned records and the full server archive remain explicit
+choices, and exports follow the selected view without rewriting saved records.
+
+### Vercel preview preparation (no deployment)
+
+Use Node 24.x, the Vite preset, npm ci, npm run build and output directory dist.
+The repository-root vercel.json intentionally disables Git-triggered deployments.
+No preview or production deployment is authorized by this preparation. Use a
+separate GorillaLab test project when deployment is approved; never reuse another
+generator's project or domains. No environment variables or backend are required.
+
+Hero portrait redistribution rights remain **unverified**; resolve that concern
+before public hosting. New preview URLs have separate browser storage: no profiles
+or damage records are uploaded or migrated automatically. Private roster audit
+fixtures, browser exports, screenshots and host configuration stay local/ignored.
+See [preview preparation, validation and blockers](docs/vercel-preview-preparation.md).

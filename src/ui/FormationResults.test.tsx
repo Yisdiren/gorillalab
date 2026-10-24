@@ -142,3 +142,12 @@ it("renders canonical event names for legacy formation labels in all seven event
     expect(screen.queryByText(/Legacy category-appended title/)).toBeNull();
   });
 });
+it("shows one optional damage tip below the first formation and reuses its logging callback",async()=>{
+ const onLog=vi.fn(),user=userEvent.setup();render(<FormationResults snapshot={snapshot()} onLog={onLog} />);
+ const tip=screen.getByRole("complementary",{name:"Want to improve your Gorilla damage?"});expect(tip.previousElementSibling).toBe(screen.getByRole("article",{name:"Formation 1"}));
+ expect(within(tip).getByText("Record your Gorilla attack results to discover which troop ratios work best for your account. The more comparable results you save, the better you can understand what works for you.")).toBeTruthy();expect(within(tip).getByText("Optional — you can use the generator without recording damage.")).toBeTruthy();
+ await user.click(screen.getByRole("button",{name:"Show 4 Alternative Formations"}));expect(screen.getAllByRole("complementary",{name:"Want to improve your Gorilla damage?"})).toHaveLength(1);expect(screen.getAllByRole("button",{name:"Record Damage"})).toHaveLength(1);await user.click(within(tip).getByRole("button",{name:"Record Damage"}));expect(onLog).toHaveBeenCalledExactlyOnceWith(0);
+});
+it("omits the damage tip without a generated formation or a recording action",()=>{
+ const data=snapshot(),view=render(<FormationResults snapshot={null} onLog={vi.fn()} />);expect(screen.queryByText("Want to improve your Gorilla damage?")).toBeNull();view.rerender(<FormationResults snapshot={{...data,formations:[]}} onLog={vi.fn()} />);expect(screen.queryByRole("button",{name:"Record Damage"})).toBeNull();view.rerender(<FormationResults snapshot={data} />);expect(screen.queryByText("Want to improve your Gorilla damage?")).toBeNull();
+});

@@ -1,5 +1,5 @@
 // @vitest-environment jsdom
-import { afterEach, expect, it } from "vitest";
+import { afterEach, expect, it, vi } from "vitest";
 import { cleanup, fireEvent, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { BattleHistory } from "./BattleHistory";
@@ -124,6 +124,7 @@ it("uses all seven display names for stored history and comparison choices witho
   eventData.events.forEach((event, i) => { const battle = emptyBattle(`label-${event.id}`, profile.serverNumber!, event.id); battle.damage = 100 + i; saveBattle(storage, battle); });
   const before = storage.getItem(BATTLE_KEY);
   render(<BattleHistory storage={storage} profile={profile} snapshot={null} />);
+  await user.selectOptions(screen.getByLabelText("History view"),"unassigned");
   const eventSelect = screen.getByLabelText("Gorilla type");
   expect(within(eventSelect).getAllByRole("option").map(o => o.textContent)).toEqual(names);
   names.forEach((name, i) => {
@@ -137,4 +138,18 @@ it("uses all seven display names for stored history and comparison choices witho
   await user.selectOptions(screen.getByLabelText("Second battle"), "label-wise");
   expect(storage.getItem(BATTLE_KEY)).toBe(before);
   expect(loadBattles(storage).map(r => r.eventId)).toEqual(eventData.events.map(e => e.id));
+});
+it("keeps another profile's same-server record out of the default history view",async()=>{
+ const {emptyBattle,saveBattle}=await import("../battles"),storage=systemStorage(),owner=systemProfile(),other={...systemProfile(),id:"other-player",name:"Other isolated player"},user=userEvent.setup();owner.serverNumber=260;other.serverNumber=260;
+ const record=emptyBattle("provided-reference",260,"space");record.damage=559430622;record.profileId=owner.id;record.playerName="Isolated reference owner";saveBattle(storage,record);const before=JSON.stringify(loadBattles(storage));
+ render(<BattleHistory storage={storage} profile={other} snapshot={null} />);expect(document.querySelectorAll(".history-table tbody tr")).toHaveLength(0);
+ await user.selectOptions(screen.getByLabelText("History view"),"server");expect(document.querySelectorAll(".history-table tbody tr")).toHaveLength(1);expect(screen.getByText(/Profile: Isolated reference owner/)).toBeTruthy();
+ await user.selectOptions(screen.getByLabelText("History view"),"profile");expect(document.querySelectorAll(".history-table tbody tr")).toHaveLength(0);expect(JSON.stringify(loadBattles(storage))).toBe(before);
+});
+it("preserves unassigned history with explicit access and scopes JSON/CSV exports to the selected view",async()=>{
+ const {Blob:NodeBlob}=await import("node:buffer"),{emptyBattle,saveBattle,importBattles,BATTLE_KEY}=await import("../battles");const storage=systemStorage(),p={...systemProfile(),serverNumber:260},record=emptyBattle("unknown-owner-reference",260,"space");record.damage=559430622;saveBattle(storage,record);const before=storage.getItem(BATTLE_KEY);
+ const originalCreate=URL.createObjectURL,originalRevoke=URL.revokeObjectURL,captured:{blob?:Blob}={};vi.stubGlobal("Blob",NodeBlob);URL.createObjectURL=blob=>{captured.blob=blob as Blob;return "blob:isolated-audit";};URL.revokeObjectURL=()=>{};const click=vi.spyOn(HTMLAnchorElement.prototype,"click").mockImplementation(()=>{});vi.useFakeTimers();
+ try{render(<BattleHistory storage={storage} profile={p} snapshot={null} />);expect(document.querySelectorAll(".history-table tbody tr")).toHaveLength(0);fireEvent.click(screen.getByRole("button",{name:"Export JSON"}));expect(JSON.parse(await captured.blob!.text()).records).toEqual([]);
+ fireEvent.change(screen.getByLabelText("History view"),{target:{value:"unassigned"}});expect(document.querySelectorAll(".history-table tbody tr")).toHaveLength(1);fireEvent.click(screen.getByRole("button",{name:"Export CSV"}));const csv=await captured.blob!.text();expect(importBattles(systemStorage(),csv,"csv",260)[0]).toMatchObject({id:record.id,profileId:null,damage:559430622});expect(storage.getItem(BATTLE_KEY)).toBe(before);
+ }finally{vi.clearAllTimers();vi.useRealTimers();click.mockRestore();vi.unstubAllGlobals();if(originalCreate)URL.createObjectURL=originalCreate;else delete (URL as any).createObjectURL;if(originalRevoke)URL.revokeObjectURL=originalRevoke;else delete (URL as any).revokeObjectURL;}
 });

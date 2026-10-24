@@ -66,3 +66,58 @@
 .server-schedule input:not([type="checkbox"]),.server-schedule select{min-height:44px}
 
 .schedule-navigation{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}.schedule-navigation button{white-space:normal}.server-schedule details{min-width:0}.server-schedule .schedule-config{overflow-wrap:anywhere}
+
+.estimated-clock{display:flex;flex-wrap:wrap;align-items:center;gap:5px 9px}.estimated-clock small{color:var(--muted);font-size:10px}.advanced-clock-settings{font-size:12px}.advanced-clock-settings p{overflow-wrap:anywhere}.advanced-clock-settings form{margin-bottom:10px}
+
+/* Generator-first hierarchy: secondary schedule stays mounted, but starts closed. */
+.generator-shortcuts{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px}
+.generator-shortcuts a,.generator-shortcuts button{display:inline-flex;align-items:center;justify-content:center;min-height:44px;max-width:100%;padding:8px 12px;border:1px solid var(--line);border-radius:6px;background:var(--panel);color:var(--muted);font:inherit;font-size:12px;text-decoration:none;overflow-wrap:anywhere;cursor:pointer}
+.generator-shortcuts a:hover,.generator-shortcuts button:hover{color:var(--lime);border-color:var(--lime)}
+#formation-results,#ratios-title,#troop-ratio-testing{scroll-margin-top:20px}
+.schedule-disclosure{padding:10px 16px;margin-top:20px;min-width:0}
+.schedule-disclosure>summary{min-height:44px;align-content:center;cursor:pointer;font-size:14px;color:var(--muted);overflow-wrap:anywhere}
+.schedule-disclosure>.server-schedule{margin:10px 0 0;padding:0;border:0;background:transparent;box-shadow:none}
+@media(max-width:680px){.generator-shortcuts{gap:6px;margin-bottom:15px}.generator-shortcuts a,.generator-shortcuts button{font-size:11px;padding:8px 10px}.schedule-disclosure{padding:8px 13px}}
+
+.damage-recording-tip{display:flex;align-items:center;gap:12px;padding:13px 16px;margin:12px 0;border:1px solid var(--line);border-left:2px solid var(--lime);border-radius:8px;background:var(--panel)}
+.damage-recording-tip>div{flex:1;min-width:0}.damage-recording-tip h3{font:inherit;font-size:14px;font-weight:650;margin:0 0 5px}.damage-recording-tip p{font-size:12px;line-height:1.5;color:var(--muted);margin:0 0 5px}.damage-recording-tip small{display:block;color:var(--muted);font-size:11px;line-height:1.4}.damage-tip-icon{color:var(--lime);font-size:20px;flex-shrink:0}.damage-recording-tip button{min-height:44px;flex-shrink:0}
+@media(max-width:680px){.damage-recording-tip{flex-wrap:wrap;padding:12px;gap:10px}.damage-tip-icon{display:none}.damage-recording-tip>div{flex-basis:100%}.damage-recording-tip button{align-self:flex-start}.damage-recording-tip h3,.damage-recording-tip p,.damage-recording-tip small{overflow-wrap:anywhere}}
+/* Gorilla Legion command center: presentation only; all event and engine data stay unchanged. */
+:root{--lime:#ffb15b;--accent:#ffb15b;--muted:#b0b6c0;--panel:#1a1d22;--line:#3b414a;--amber:#ffbf71;--shield:#b4c1d1;--bomber:#ffab54;--shooter:#63d9f0;color:#eef0f4;background:#101216}
+body{background:radial-gradient(ellipse at top right,#30241b55,transparent 45%),#101216}
+.sidebar{background:#14171b;border-color:var(--line)}
+.workspace,.topbar{background:transparent}.topbar{border-color:var(--line)}
+.panel,.formation-card,.team-card,.event-button,.profile-card{background:linear-gradient(150deg,#22262c,#191c21);border-color:var(--line);box-shadow:inset 0 1px 0 #ffffff06,0 4px 12px #00000016}
+.page-heading{padding:18px 20px;margin-bottom:18px;border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:8px;background:linear-gradient(115deg,#30261e,#1a1d22 65%);gap:16px}
+.page-heading h1{font-size:clamp(27px,3vw,40px);line-height:1.05;margin:6px 0 8px;letter-spacing:-.6px}.page-heading p{font-size:12px;line-height:1.5;margin:0;max-width:640px}.eyebrow{color:var(--accent)}
+.header-stats strong{font-size:26px}.header-stats span{font-size:9px}
+.event-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px}
+.event-button{min-width:0;padding:10px 5px;display:flex;flex-direction:column;align-items:center;gap:6px;border:1px solid var(--line);border-radius:7px;min-height:145px}
+.event-button.selected{background:linear-gradient(160deg,#46301e,#25201b);border-color:var(--accent);box-shadow:inset 0 2px 0 var(--accent)}
+.event-button:hover{border-color:var(--accent)}.event-button strong{font-size:12px;line-height:1.25;overflow-wrap:anywhere}.event-day{font-size:10px;color:var(--muted)}.event-bonus{font-size:9px;color:var(--accent)}
+.gorilla-portrait{width:48px;height:48px;object-fit:contain;flex-shrink:0;border-radius:5px;background:#101318;box-shadow:0 2px 7px #0008}.gorilla-fallback{display:grid;place-items:center;font-weight:700;color:var(--muted);border:1px solid var(--line)}
+.event-overview,.recommendation,.notice,.data-note{border-color:var(--line);background:#1c2026}.recommendation{border-left-color:var(--accent)}
+input,select,textarea{background:#12151a;border-color:#4d5663;color:#eef0f4}.secondary,.segmented button{background:#252a31;color:#e4e7ed;border-color:var(--line)}
+.primary{background:var(--accent);color:#20160c}.primary:hover{background:#ffc27e}.segmented button.active{background:var(--accent);color:#20160c}
+.ratio-shield,.hero-class.Shieldbearer{color:var(--shield)}.ratio-bomber,.hero-class.Bomber{color:var(--bomber)}.ratio-shooter,.hero-class.Shooter{color:var(--shooter)}
+.shield-bar{background:var(--shield)}.bomber-bar{background:var(--bomber)}.shooter-bar{background:var(--shooter)}
+.team-ratios{border-top-color:var(--line)}.team-card{border-color:var(--line)}
+.team-card h4{color:#eef0f4}.team-card h4 span{color:var(--muted)}.ranking-confidence{color:var(--muted)}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.damage-recording-tip{background:linear-gradient(110deg,#29231d,#1a1d22);border-color:var(--line);border-left-color:var(--accent)}
+@media(max-width:1000px){.event-grid{gap:6px}.event-button{padding:9px 3px}.event-button strong{font-size:11px}.event-bonus{font-size:8px}.page-heading{padding:16px}}
+@media(max-width:680px){.page-heading{padding:13px;gap:10px}.page-heading h1{font-size:29px}.page-heading .header-stats{display:none}.event-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}.event-button,.event-button:last-child{grid-column:auto;min-height:126px;padding:8px 3px}.gorilla-portrait{width:44px;height:44px}.event-button strong{font-size:11px}.event-section .section-heading{align-items:flex-start;gap:8px;flex-wrap:wrap}.event-section .section-heading>.muted{font-size:10px}.team-card{background:#1b1f25}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important}}
+.nav-item.active,.profile-chip.selected{background:#35271d;border-color:#775333;color:var(--accent)}
+.logo-mark,.brand-icon{background:var(--accent);color:#20160c}
+.badge,.bonus-list>div{border-color:#695039;background:#30261e;color:#ffd19a}
+.profile-avatar{background:#35271d;border-color:#775333;color:#ffd19a}
+.class-monogram{background:#262c35;border-color:#4d5663;color:var(--shield)}
+.status-message{color:#ffd19a;background:#30261e;border-left-color:var(--accent)}
+.notice.warning{color:#e5cda5;background:#29251e;border-color:#695039}
+.brand-mark{background:var(--accent);border-color:#cd8c43;color:#20160c}
+.formation{background:#191c21;border-color:var(--line)}
+.formation-header{background:linear-gradient(110deg,#30261e,#20242a);border-color:var(--line)}
+.formation-name p{color:var(--muted)}.stars{color:#ffd19a}
+.segmented{background:#12151a;border-color:var(--line)}.segmented button.selected{background:#49321e;border-color:#8c6138;color:#ffd19a}
+.page-heading h1 span{display:inline}.page-heading h1 span::before{content:' '}

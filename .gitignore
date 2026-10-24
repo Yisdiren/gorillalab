@@ -6,3 +6,30 @@ dist/
 !.env.example
 *.log
 .schedule-preview.*
+
+# Private host / deployment configuration and credentials
+.vercel/
+.codex/
+.agents/
+.vscode/
+.idea/
+.npmrc
+.yarnrc.yml
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+local-data/
+private/
+browser-storage/
+exports/
+.preview-validation/
+
+# Local player-roster audits and browser screenshots are not source fixtures.
+.stiletto-*
+docs/browser-audit/
+docs/stiletto248-*.json
+docs/stiletto248-audit.md
+src/test/stiletto248-fixture.ts
+src/stiletto248-audit.test.ts

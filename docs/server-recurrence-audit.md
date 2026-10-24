@@ -1,5 +1,9 @@
 # Automatic 14-day rotation audit — 2026-10-24
 
+Clock follow-up: the later [automatic UTC−02:00 clock task](automatic-server-clock-audit.md)
+supersedes this report’s manual-only clock and unverified-offset statements.
+The confirmed recurrence and review findings below remain historical validation.
+
 ## Scope and changed files
 
 - `src/server-schedule.ts`: ST calendar recurrence, bounded occurrence resolution, manual overrides/exceptions, schema validation and safe v1-to-v2 migration. Existing clock estimation, freshness and invalidation rules retained.
