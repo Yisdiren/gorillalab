@@ -476,7 +476,10 @@ expires after 24 hours (app policy), detects session clock jumps, and can be res
 Across-reload undetected device-clock changes and manual-entry delays remain limitations.
 Version-1 one-off schedules migrate in memory without overwriting preferences;
 the next schedule save/checkpoint writes version 2 at the existing schedule key.
-Disabled-only or empty legacy schedules retain recurrence disabled. Profiles,
+Disabled-only or empty legacy schedules retain recurrence disabled. Valid shifted
+legacy cycles that conflict with automatic dates are also preserved with recurrence
+disabled and a visible review notice. Recurring order and manual-cycle order
+have separate controls; manual-only navigation follows saved cycles. Profiles,
 formations, progression, ratio experiments and battle history are not rewritten.
 
 See [recurrence validation and limitations](docs/server-recurrence-audit.md).

@@ -47,3 +47,24 @@ it("rejects conflicting delayed cycles and malformed exception times without ove
  expect(()=>updateScheduleSettings(storage,"p",248,s=>({...s,cycles:[{...exampleCycle(),id:"delay",startDate:"2026-11-23",replacesStartDate:"2026-11-09"}]}))).toThrow();expect(storage.getItem(SCHEDULE_KEY)).toBe(before);
  const s=settings();s.cycles=[{...exampleCycle(),exceptions:[{eventId:"space",date:"2026-10-26",time:"25:00:00",skip:false}]}];expect(validateSettings(s)).toBe(false);
 });
+it.each(["2000-01-01","2000-01-03","2199-12-25","2199-12-31"])("resolves dates at calendar limits without throwing: %s",date=>{
+ const s=at(date,"00:00:00");expect(s.next).not.toBeNull();expect(s.countdownSeconds).toBeGreaterThan(0);
+ const cycle=resolvedCycle(settings(),cycleStartForDate(settings().recurrence,date));expect(cycleOccurrences(cycle)).toHaveLength(7);
+});
+it("preserves a valid off-cadence legacy cycle instead of rejecting its migration",()=>{
+ const storage=systemStorage(),cycle={...exampleCycle(),id:"shifted",startDate:"2026-10-27",source:"player-configured" as const};
+ const raw=JSON.stringify({version:1,entries:[{profileId:"p",server:248,cycles:[cycle],calibration:null}]});storage.setItem(SCHEDULE_KEY,raw);
+ const migrated=loadScheduleSettings(storage,"p",248);expect(migrated.cycles).toEqual([cycle]);expect(migrated.recurrence.enabled).toBe(false);expect(migrated.migrationNotice).toContain("dates are preserved");expect(at("2026-10-27","00:00:00",migrated).next?.eventId).toBe("space");expect(storage.getItem(SCHEDULE_KEY)).toBe(raw);
+ updateScheduleSettings(storage,"p",248,s=>s);expect(loadScheduleSettings(storage,"p",248).cycles).toEqual([cycle]);
+});
+it("still rejects malformed legacy entries without changing storage",()=>{
+ const storage=systemStorage();for(const cycles of [[null],[{...exampleCycle(),order:["space"]}]]){const raw=JSON.stringify({version:1,entries:[{profileId:"p",server:248,cycles,calibration:null}]});storage.setItem(SCHEDULE_KEY,raw);expect(()=>loadScheduleSettings(storage,"p",248)).toThrow(/not been overwritten/);expect(storage.getItem(SCHEDULE_KEY)).toBe(raw);}
+});
+it("honors the full allowed set of cancelled cycles before finding the next rotation",()=>{
+ const s=settings();s.cycles=Array.from({length:24},(_,i)=>({...exampleCycle(),id:"skip-"+i,startDate:addServerDays("2026-10-26",i*14),enabled:false}));expect(validateSettings(s)).toBe(true);
+ expect(at("2026-10-26","00:00:00",s).next?.date).toBe(addServerDays("2026-10-26",24*14));expect(at("2026-10-26","00:00:00",s).today).toBeNull();
+});
+it("reaches a delayed same-day exception after the earlier event without claiming its availability",()=>{
+ const s=settings();s.cycles=[{...exampleCycle(),exceptions:[{eventId:"space",date:"2026-10-27",time:"02:00:00",skip:false}]}];expect(validateSettings(s)).toBe(true);
+ const between=at("2026-10-27","01:00:00",s);expect(between.today?.eventId).toBe("wise");expect(between.next?.eventId).toBe("space");expect(between.countdownSeconds).toBe(3600);expect(at("2026-10-27","02:00:00",s).today?.eventId).toBe("space");
+});
