@@ -344,3 +344,13 @@ it("opens the existing damage-recording interface from the optional tip without 
  const {loadBattles}=await import("./battles"),storage=memory([completeProfile()]),before=storage.getItem(STORAGE_KEY),user=userEvent.setup();render(<App storage={storage} />);await ready();await user.click(screen.getByRole("button",{name:/Generate Formations/}));await screen.findByRole("article",{name:"Formation 1"});await user.click(screen.getByRole("button",{name:"Record Damage"}));
  expect(screen.getByRole("heading",{name:"Battle history & testing"})).toBeTruthy();expect(screen.getAllByRole("spinbutton",{name:"Reported damage"})).toHaveLength(1);expect((screen.getByLabelText("Generated formation snapshot") as HTMLSelectElement).value).toBe("0");expect((screen.getByRole("checkbox",{name:/Attach generated individual formation/}) as HTMLInputElement).checked).toBe(true);expect((screen.getByLabelText("Reported damage") as HTMLInputElement).value).toBe("");expect(storage.getItem(STORAGE_KEY)).toBe(before);expect(loadBattles(storage)).toEqual([]);
 });
+
+it("renders the command center with all seven accessible portrait selectors", async () => {
+  render(<App storage={memory()} />); await ready();
+  expect(screen.getByRole("heading", { level: 1, name: "GorillaLab Command Center" })).toBeTruthy();
+  const group = screen.getByRole("group", { name: "Gorilla event" });
+  for (const event of eventData.events) {
+    const button = within(group).getByRole("button", { name: `${event.day} ${event.name}` });
+    expect(within(button).getByRole("img").getAttribute("src")).toBe(`/gorillas/${event.id}.png`);
+  }
+});
