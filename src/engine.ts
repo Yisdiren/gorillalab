@@ -1,0 +1,1 @@
+export type TroopRatio={shield:number;bomber:number;shooter:number};export const validRatio=(r:TroopRatio)=>r.shield>=0&&r.bomber>=0&&r.shooter>=0&&r.shield+r.bomber+r.shooter===100;
