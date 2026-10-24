@@ -1,1 +1,4 @@
-import React from "react";import{createRoot}from"react-dom/client";import "./style.css";createRoot(document.getElementById("root")!).render(<main><h1>GorillaLab</h1><p>Wise Gorilla formation generator — work in progress.</p></main>);
+import { createRoot } from "react-dom/client";
+import App from "./App";
+import "./style.css";
+createRoot(document.getElementById("root")!).render(<App />);

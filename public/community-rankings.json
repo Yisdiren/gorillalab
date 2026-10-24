@@ -1,0 +1,194 @@
+{
+  "version": 1,
+  "status": "provisional-community-opinion",
+  "source": "https://lojxlab.com/gorilla-legion/",
+  "authors": "WaysToDie & pikaboo, reproduced by LOJ XLab",
+  "scope": [
+    "space",
+    "wise",
+    "primal",
+    "cyber",
+    "armed",
+    "treasure",
+    "warlord"
+  ],
+  "ordinalPoints": {
+    "S": 4,
+    "A": 3,
+    "B": 2,
+    "C": 1,
+    "D": 0
+  },
+  "pointsMeaning": "Application ordinal preference points, not damage or source combat values",
+  "rankings": [
+    {
+      "heroId": "Tyronn",
+      "tier": "S"
+    },
+    {
+      "heroId": "Phoenix",
+      "tier": "S"
+    },
+    {
+      "heroId": "Xuanming",
+      "tier": "S"
+    },
+    {
+      "heroId": "Flameborne",
+      "tier": "S"
+    },
+    {
+      "heroId": "Worrell",
+      "tier": "S"
+    },
+    {
+      "heroId": "Alph",
+      "tier": "S"
+    },
+    {
+      "heroId": "Ada",
+      "tier": "S"
+    },
+    {
+      "heroId": "Drake",
+      "tier": "S"
+    },
+    {
+      "heroId": "Veronica",
+      "tier": "S"
+    },
+    {
+      "heroId": "Marcus",
+      "tier": "A"
+    },
+    {
+      "heroId": "Ryuichi Ito",
+      "tier": "A"
+    },
+    {
+      "heroId": "Whisper",
+      "tier": "A"
+    },
+    {
+      "heroId": "Wukong",
+      "tier": "A"
+    },
+    {
+      "heroId": "Koschevoi",
+      "tier": "A"
+    },
+    {
+      "heroId": "Mireya",
+      "tier": "A"
+    },
+    {
+      "heroId": "Lofili",
+      "tier": "A"
+    },
+    {
+      "heroId": "Kate",
+      "tier": "A"
+    },
+    {
+      "heroId": "Sawyer",
+      "tier": "A"
+    },
+    {
+      "heroId": "Otto",
+      "tier": "B"
+    },
+    {
+      "heroId": "Samir",
+      "tier": "B"
+    },
+    {
+      "heroId": "Vivian",
+      "tier": "B"
+    },
+    {
+      "heroId": "Edwin",
+      "tier": "B"
+    },
+    {
+      "heroId": "Devilian",
+      "tier": "B"
+    },
+    {
+      "heroId": "Inata",
+      "tier": "B"
+    },
+    {
+      "heroId": "Zoltan",
+      "tier": "C"
+    },
+    {
+      "heroId": "Ekko",
+      "tier": "C"
+    },
+    {
+      "heroId": "Tormund",
+      "tier": "D"
+    },
+    {
+      "heroId": "Caesar",
+      "tier": "D"
+    },
+    {
+      "heroId": "Gerd",
+      "tier": "D"
+    },
+    {
+      "heroId": "Vesaryon",
+      "tier": "D"
+    },
+    {
+      "heroId": "Gimes",
+      "tier": "D"
+    },
+    {
+      "heroId": "Mia",
+      "tier": "D"
+    },
+    {
+      "heroId": "Flora",
+      "tier": "D"
+    },
+    {
+      "heroId": "Platos",
+      "tier": "D"
+    },
+    {
+      "heroId": "Lunarl",
+      "tier": "S",
+      "referenceName": "Lunari",
+      "identityEvidence": "Player explicitly confirmed canonical spelling Lunarl on 2026-10-24."
+    },
+    {
+      "heroId": "Iwado",
+      "tier": "D",
+      "referenceName": "Iwado",
+      "identityEvidence": "Exact canonical match; distinct from Iwakado."
+    }
+  ],
+  "unresolved": [
+    {
+      "referenceName": "All blue heroes",
+      "reason": "Group statement without named identities; do not infer rarity-to-tier assignments."
+    }
+  ],
+  "conflicts": [
+    "Guide spells Lunari; player confirms canonical Lunarl. Apply S tier to Lunarl only.",
+    "Guide names Iwado (D); Iwakado remains a distinct unresolved legacy identity with Unknown tier.",
+    "Guide currently shows Cyber Wednesday / Primal Thursday on S216 and notes changing schedules; GorillaLab retains player-configured Primal Wednesday / Cyber Thursday. Check Current Boss on your server.",
+    "Guide creator ratios differ from older LOJXLab ratios and other community records; all baselines remain test starting points.",
+    "Guide has one general hero tier list, not event-specific rankings; identical provisional preferences apply to all seven events.",
+    "Flameborne appears as S in the guide, but independent hero skill/season identity evidence remains incomplete."
+  ],
+  "reviewedOn": "2026-10-24",
+  "sourceSection": "Best heroes for Gorilla — opinion by WaysToDie & pikaboo",
+  "sourceAccess": {
+    "guide": "readable-html",
+    "originalImage": "not-found-in-project",
+    "originalDiscord": "JavaScript/login content unavailable"
+  }
+}

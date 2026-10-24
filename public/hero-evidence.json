@@ -1,0 +1,613 @@
+{
+  "version": 1,
+  "verification": "Checked against community transcriptions of game screens; not independently verified in game.",
+  "heroes": [
+    {
+      "heroId": "Kate",
+      "class": "Shooter",
+      "seasonFrom": 6,
+      "status": "source-observed",
+      "source": "https://lojxlab.com/heropedia/",
+      "reviewedOn": "2026-10-24",
+      "skills": [],
+      "exclusiveEquipment": null,
+      "gorillaApplicability": "unknown",
+      "unknownFields": [
+        "unlisted skills and triggers",
+        "exclusive equipment level effects",
+        "star scaling",
+        "Gorilla damage conversion"
+      ]
+    },
+    {
+      "heroId": "Otto",
+      "class": "Shieldbearer",
+      "seasonFrom": 6,
+      "status": "source-observed",
+      "source": "https://lojxlab.com/heropedia/",
+      "reviewedOn": "2026-10-24",
+      "skills": [],
+      "exclusiveEquipment": null,
+      "gorillaApplicability": "unknown",
+      "unknownFields": [
+        "unlisted skills and triggers",
+        "exclusive equipment level effects",
+        "star scaling",
+        "Gorilla damage conversion"
+      ]
+    },
+    {
+      "heroId": "Worrell",
+      "class": "Bomber",
+      "seasonFrom": 6,
+      "status": "source-observed",
+      "source": "https://lojxlab.com/heropedia/",
+      "reviewedOn": "2026-10-24",
+      "skills": [],
+      "exclusiveEquipment": null,
+      "gorillaApplicability": "unknown",
+      "unknownFields": [
+        "unlisted skills and triggers",
+        "exclusive equipment level effects",
+        "star scaling",
+        "Gorilla damage conversion"
+      ]
+    },
+    {
+      "heroId": "Wukong",
+      "class": "Bomber",
+      "seasonFrom": 6,
+      "status": "source-observed",
+      "source": "https://lojxlab.com/heropedia/",
+      "reviewedOn": "2026-10-24",
+      "skills": [],
+      "exclusiveEquipment": null,
+      "gorillaApplicability": "unknown",
+      "unknownFields": [
+        "unlisted skills and triggers",
+        "exclusive equipment level effects",
+        "star scaling",
+        "Gorilla damage conversion"
+      ]
+    },
+    {
+      "heroId": "Ada",
+      "class": "Shooter",
+      "seasonFrom": 5,
+      "status": "source-observed",
+      "source": "https://lojxlab.com/heropedia/ada/",
+      "reviewedOn": "2026-10-24",
+      "skills": [
+        {
+          "id": "sweet-smile",
+          "name": "Sweet Smile",
+          "description": "Enemy defense and health reduction.",
+          "trigger": "War skill context; Gorilla applicability unknown.",
+          "values": null,
+          "status": "source-observed",
+          "source": "https://lojxlab.com/heropedia/ada/",
+          "gorillaApplicability": "unknown"
+        },
+        {
+          "id": "continuous-destruction",
+          "name": "Continuous Destruction",
+          "description": "Shooters may gain an additional basic attack.",
+          "trigger": "Shieldbearer or Bomber basic damage; chance-based. The 1,000 troop threshold is community guidance, not established by this skill text.",
+          "values": null,
+          "status": "source-observed",
+          "source": "https://lojxlab.com/heropedia/ada/",
+          "gorillaApplicability": "unknown"
+        },
+        {
+          "id": "firepower-barrage",
+          "name": "Firepower Barrage",
+          "description": "Additional Shooter attack against enemy troops.",
+          "trigger": "After four attacks.",
+          "values": null,
+          "status": "source-observed",
+          "source": "https://lojxlab.com/heropedia/ada/",
+          "gorillaApplicability": "unknown"
+        }
+      ],
+      "exclusiveEquipment": {
+        "name": "Sweet Kiss",
+        "description": "Firearm Mastery applies an attack boost in rally context; Gorilla classification is unverified.",
+        "levelEffects": null,
+        "source": "https://lojxlab.com/heropedia/ada/",
+        "status": "source-observed"
+      },
+      "gorillaApplicability": "unknown",
+      "unknownFields": [
+        "unlisted skills and triggers",
+        "exclusive equipment level effects",
+        "star scaling",
+        "Gorilla damage conversion"
+      ]
+    },
+    {
+      "heroId": "Edwin",
+      "class": "Shooter",
+      "seasonFrom": 5,
+      "status": "source-observed",
+      "source": "https://lojxlab.com/heropedia/",
+      "reviewedOn": "2026-10-24",
+      "skills": [],
+      "exclusiveEquipment": null,
+      "gorillaApplicability": "unknown",
+      "unknownFields": [
+        "unlisted skills and triggers",
+        "exclusive equipment level effects",
+        "star scaling",
+        "Gorilla damage conversion"
+      ]
+    },
+    {
+      "heroId": "Lee",
+      "class": "Bomber",
+      "seasonFrom": 5,
+      "status": "source-observed",
+      "source": "https://lojxlab.com/heropedia/",
+      "reviewedOn": "2026-10-24",
+      "skills": [],
+      "exclusiveEquipment": null,
+      "gorillaApplicability": "unknown",
+      "unknownFields": [
+        "unlisted skills and triggers",
+        "exclusive equipment level effects",
+        "star scaling",
+        "Gorilla damage conversion"
+      ]
+    },
+    {
+      "heroId": "Marcus",
+      "class": "Shieldbearer",
+      "seasonFrom": 5,
+      "status": "source-observed",
+      "source": "https://lojxlab.com/heropedia/",
+      "reviewedOn": "2026-10-24",
+      "skills": [],
+      "exclusiveEquipment": null,
+      "gorillaApplicability": "unknown",
+      "unknownFields": [
+        "unlisted skills and triggers",
+        "exclusive equipment level effects",
+        "star scaling",
+        "Gorilla damage conversion"
+      ]
+    },
+    {
+      "heroId": "Drake",
+      "class": "Shooter",
+      "seasonFrom": 4,
+      "status": "source-observed",
+      "source": "https://lojxlab.com/heropedia/",
+      "reviewedOn": "2026-10-24",
+      "skills": [],
+      "exclusiveEquipment": null,
+      "gorillaApplicability": "unknown",
+      "unknownFields": [
+        "unlisted skills and triggers",
+        "exclusive equipment level effects",
+        "star scaling",
+        "Gorilla damage conversion"
+      ]
+    },
+    {
+      "heroId": "Koschevoi",
+      "class": "Bomber",
+      "seasonFrom": 4,
+      "status": "source-observed",
+      "source": "https://lojxlab.com/heropedia/",
+      "reviewedOn": "2026-10-24",
+      "skills": [],
+      "exclusiveEquipment": null,
+      "gorillaApplicability": "unknown",
+      "unknownFields": [
+        "unlisted skills and triggers",
+        "exclusive equipment level effects",
+        "star scaling",
+        "Gorilla damage conversion"
+      ]
+    },
+    {
+      "heroId": "Ryuichi Ito",
+      "class": "Bomber",
+      "seasonFrom": 4,
+      "status": "source-observed",
+      "source": "https://lojxlab.com/heropedia/ryuichi-ito/",
+      "reviewedOn": "2026-10-24",
+      "skills": [
+        {
+          "id": "weakness-detection",
+          "name": "Weakness Detection",
+          "description": "Basic attacks can critically hit.",
+          "trigger": "Chance on basic attacks.",
+          "values": null,
+          "status": "source-observed",
+          "source": "https://lojxlab.com/heropedia/ryuichi-ito/",
+          "gorillaApplicability": "unknown"
+        },
+        {
+          "id": "agile-stance",
+          "name": "Agile Stance",
+          "description": "Troops can evade attacks.",
+          "trigger": "Chance on incoming basic attacks.",
+          "values": null,
+          "status": "source-observed",
+          "source": "https://lojxlab.com/heropedia/ryuichi-ito/",
+          "gorillaApplicability": "unknown"
+        },
+        {
+          "id": "combo-strikes",
+          "name": "Combo Strikes",
+          "description": "Bombers gain an additional basic attack.",
+          "trigger": "Every two basic attacks.",
+          "values": null,
+          "status": "source-observed",
+          "source": "https://lojxlab.com/heropedia/ryuichi-ito/",
+          "gorillaApplicability": "unknown"
+        }
+      ],
+      "exclusiveEquipment": {
+        "name": "White Phantom",
+        "description": "Pinpoint Assault is rally-specific; Gorilla classification is unverified.",
+        "levelEffects": null,
+        "source": "https://lojxlab.com/heropedia/ryuichi-ito/",
+        "status": "source-observed"
+      },
+      "gorillaApplicability": "unknown",
+      "unknownFields": [
+        "unlisted skills and triggers",
+        "exclusive equipment level effects",
+        "star scaling",
+        "Gorilla damage conversion"
+      ]
+    },
+    {
+      "heroId": "Zoltan",
+      "class": "Shieldbearer",
+      "seasonFrom": 4,
+      "status": "source-observed",
+      "source": "https://lojxlab.com/heropedia/",
+      "reviewedOn": "2026-10-24",
+      "skills": [],
+      "exclusiveEquipment": null,
+      "gorillaApplicability": "unknown",
+      "unknownFields": [
+        "unlisted skills and triggers",
+        "exclusive equipment level effects",
+        "star scaling",
+        "Gorilla damage conversion"
+      ]
+    },
+    {
+      "heroId": "Sawyer",
+      "class": "Shooter",
+      "seasonFrom": 3,
+      "status": "source-observed",
+      "source": "https://lojxlab.com/heropedia/",
+      "reviewedOn": "2026-10-24",
+      "skills": [],
+      "exclusiveEquipment": null,
+      "gorillaApplicability": "unknown",
+      "unknownFields": [
+        "unlisted skills and triggers",
+        "exclusive equipment level effects",
+        "star scaling",
+        "Gorilla damage conversion"
+      ]
+    },
+    {
+      "heroId": "Veronica",
+      "class": "Shooter",
+      "seasonFrom": 3,
+      "status": "source-observed",
+      "source": "https://lojxlab.com/heropedia/",
+      "reviewedOn": "2026-10-24",
+      "skills": [],
+      "exclusiveEquipment": null,
+      "gorillaApplicability": "unknown",
+      "unknownFields": [
+        "unlisted skills and triggers",
+        "exclusive equipment level effects",
+        "star scaling",
+        "Gorilla damage conversion"
+      ]
+    },
+    {
+      "heroId": "Whisper",
+      "class": "Bomber",
+      "seasonFrom": 3,
+      "status": "source-observed",
+      "source": "https://lojxlab.com/heropedia/",
+      "reviewedOn": "2026-10-24",
+      "skills": [],
+      "exclusiveEquipment": null,
+      "gorillaApplicability": "unknown",
+      "unknownFields": [
+        "unlisted skills and triggers",
+        "exclusive equipment level effects",
+        "star scaling",
+        "Gorilla damage conversion"
+      ]
+    },
+    {
+      "heroId": "Xuanming",
+      "class": "Shieldbearer",
+      "seasonFrom": 3,
+      "status": "source-observed",
+      "source": "https://lojxlab.com/heropedia/",
+      "reviewedOn": "2026-10-24",
+      "skills": [],
+      "exclusiveEquipment": null,
+      "gorillaApplicability": "unknown",
+      "unknownFields": [
+        "unlisted skills and triggers",
+        "exclusive equipment level effects",
+        "star scaling",
+        "Gorilla damage conversion"
+      ]
+    },
+    {
+      "heroId": "Alph",
+      "class": "Bomber",
+      "seasonFrom": 2,
+      "status": "source-observed",
+      "source": "https://lojxlab.com/heropedia/",
+      "reviewedOn": "2026-10-24",
+      "skills": [],
+      "exclusiveEquipment": null,
+      "gorillaApplicability": "unknown",
+      "unknownFields": [
+        "unlisted skills and triggers",
+        "exclusive equipment level effects",
+        "star scaling",
+        "Gorilla damage conversion"
+      ]
+    },
+    {
+      "heroId": "Caesar",
+      "class": "Shieldbearer",
+      "seasonFrom": 2,
+      "status": "source-observed",
+      "source": "https://lojxlab.com/heropedia/",
+      "reviewedOn": "2026-10-24",
+      "skills": [],
+      "exclusiveEquipment": null,
+      "gorillaApplicability": "unknown",
+      "unknownFields": [
+        "unlisted skills and triggers",
+        "exclusive equipment level effects",
+        "star scaling",
+        "Gorilla damage conversion"
+      ]
+    },
+    {
+      "heroId": "Lanchester",
+      "class": "Bomber",
+      "seasonFrom": 2,
+      "status": "source-observed",
+      "source": "https://lojxlab.com/heropedia/",
+      "reviewedOn": "2026-10-24",
+      "skills": [],
+      "exclusiveEquipment": null,
+      "gorillaApplicability": "unknown",
+      "unknownFields": [
+        "unlisted skills and triggers",
+        "exclusive equipment level effects",
+        "star scaling",
+        "Gorilla damage conversion"
+      ]
+    },
+    {
+      "heroId": "Mireya",
+      "class": "Shooter",
+      "seasonFrom": 2,
+      "status": "source-observed",
+      "source": "https://lojxlab.com/heropedia/",
+      "reviewedOn": "2026-10-24",
+      "skills": [],
+      "exclusiveEquipment": null,
+      "gorillaApplicability": "unknown",
+      "unknownFields": [
+        "unlisted skills and triggers",
+        "exclusive equipment level effects",
+        "star scaling",
+        "Gorilla damage conversion"
+      ]
+    },
+    {
+      "heroId": "Tyronn",
+      "class": "Shieldbearer",
+      "seasonFrom": 1,
+      "status": "source-observed",
+      "source": "https://lojxlab.com/heropedia/tyronn/",
+      "reviewedOn": "2026-10-24",
+      "skills": [
+        {
+          "id": "cripple",
+          "name": "Cripple",
+          "description": "Increases damage taken by enemy troops.",
+          "trigger": "War context; Gorilla applicability unknown.",
+          "values": null,
+          "status": "source-observed",
+          "source": "https://lojxlab.com/heropedia/tyronn/",
+          "gorillaApplicability": "unknown"
+        },
+        {
+          "id": "blood-feast",
+          "name": "Blood Feast",
+          "description": "Increases allied troop lethality.",
+          "trigger": "War context; exact Gorilla application unknown.",
+          "values": null,
+          "status": "source-observed",
+          "source": "https://lojxlab.com/heropedia/tyronn/",
+          "gorillaApplicability": "unknown"
+        },
+        {
+          "id": "death-toll",
+          "name": "Death Toll",
+          "description": "Chance to stun the opponent.",
+          "trigger": "Attack-triggered chance. Gorilla immunity unknown.",
+          "values": null,
+          "status": "source-observed",
+          "source": "https://lojxlab.com/heropedia/tyronn/",
+          "gorillaApplicability": "unknown"
+        }
+      ],
+      "exclusiveEquipment": {
+        "name": "Brutal Gauntlets",
+        "description": "Bull Rush is rally-specific; star bonus and several-march behavior are not modeled.",
+        "levelEffects": null,
+        "source": "https://lojxlab.com/heropedia/tyronn/",
+        "status": "source-observed"
+      },
+      "gorillaApplicability": "unknown",
+      "unknownFields": [
+        "unlisted skills and triggers",
+        "exclusive equipment level effects",
+        "star scaling",
+        "Gorilla damage conversion"
+      ]
+    },
+    {
+      "heroId": "Phoenix",
+      "class": "Shieldbearer",
+      "seasonFrom": 1,
+      "status": "source-observed",
+      "source": "https://lojxlab.com/heropedia/phoenix/",
+      "reviewedOn": "2026-10-24",
+      "skills": [
+        {
+          "id": "crush-defense",
+          "name": "Crush Defense",
+          "description": "Increases allied troop damage.",
+          "trigger": "War context; Gorilla applicability unknown.",
+          "values": null,
+          "status": "source-observed",
+          "source": "https://lojxlab.com/heropedia/phoenix/",
+          "gorillaApplicability": "unknown"
+        },
+        {
+          "id": "unyielding-spirit",
+          "name": "Unyielding Spirit",
+          "description": "Increases allied troop health.",
+          "trigger": "War context; Gorilla applicability unknown.",
+          "values": null,
+          "status": "source-observed",
+          "source": "https://lojxlab.com/heropedia/phoenix/",
+          "gorillaApplicability": "unknown"
+        },
+        {
+          "id": "earth-shaking-hammer",
+          "name": "Earth-Shaking Hammer",
+          "description": "Chance to stun the opponent.",
+          "trigger": "Attack-triggered chance. Gorilla immunity unknown.",
+          "values": null,
+          "status": "source-observed",
+          "source": "https://lojxlab.com/heropedia/phoenix/",
+          "gorillaApplicability": "unknown"
+        }
+      ],
+      "exclusiveEquipment": {
+        "name": "Colossus Hammer",
+        "description": "Decisive Strike is solo-specific. Multi-march applicability and star scaling are not modeled.",
+        "levelEffects": null,
+        "source": "https://lojxlab.com/heropedia/phoenix/",
+        "status": "source-observed"
+      },
+      "gorillaApplicability": "unknown",
+      "unknownFields": [
+        "unlisted skills and triggers",
+        "exclusive equipment level effects",
+        "star scaling",
+        "Gorilla damage conversion"
+      ]
+    },
+    {
+      "heroId": "Vivian",
+      "class": "Bomber",
+      "seasonFrom": 1,
+      "status": "source-observed",
+      "source": "https://lojxlab.com/heropedia/",
+      "reviewedOn": "2026-10-24",
+      "skills": [],
+      "exclusiveEquipment": null,
+      "gorillaApplicability": "unknown",
+      "unknownFields": [
+        "unlisted skills and triggers",
+        "exclusive equipment level effects",
+        "star scaling",
+        "Gorilla damage conversion"
+      ]
+    },
+    {
+      "heroId": "Devilian",
+      "class": "Shooter",
+      "seasonFrom": 1,
+      "status": "source-observed",
+      "source": "https://lojxlab.com/heropedia/",
+      "reviewedOn": "2026-10-24",
+      "skills": [],
+      "exclusiveEquipment": null,
+      "gorillaApplicability": "unknown",
+      "unknownFields": [
+        "unlisted skills and triggers",
+        "exclusive equipment level effects",
+        "star scaling",
+        "Gorilla damage conversion"
+      ]
+    },
+    {
+      "heroId": "Inata",
+      "class": "Shooter",
+      "seasonFrom": 1,
+      "status": "source-observed",
+      "source": "https://lojxlab.com/heropedia/",
+      "reviewedOn": "2026-10-24",
+      "skills": [],
+      "exclusiveEquipment": null,
+      "gorillaApplicability": "unknown",
+      "unknownFields": [
+        "unlisted skills and triggers",
+        "exclusive equipment level effects",
+        "star scaling",
+        "Gorilla damage conversion"
+      ]
+    },
+    {
+      "heroId": "Tormund",
+      "class": "Bomber",
+      "seasonFrom": 1,
+      "status": "source-observed",
+      "source": "https://lojxlab.com/heropedia/",
+      "reviewedOn": "2026-10-24",
+      "skills": [],
+      "exclusiveEquipment": null,
+      "gorillaApplicability": "unknown",
+      "unknownFields": [
+        "unlisted skills and triggers",
+        "exclusive equipment level effects",
+        "star scaling",
+        "Gorilla damage conversion"
+      ]
+    },
+    {
+      "heroId": "Mia",
+      "class": "Shooter",
+      "seasonFrom": 1,
+      "status": "source-observed",
+      "source": "https://lojxlab.com/heropedia/",
+      "reviewedOn": "2026-10-24",
+      "skills": [],
+      "exclusiveEquipment": null,
+      "gorillaApplicability": "unknown",
+      "unknownFields": [
+        "unlisted skills and triggers",
+        "exclusive equipment level effects",
+        "star scaling",
+        "Gorilla damage conversion"
+      ]
+    }
+  ]
+}

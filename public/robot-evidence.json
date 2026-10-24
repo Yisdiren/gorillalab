@@ -1,0 +1,68 @@
+{
+  "version": 1,
+  "source": "https://lojwiki.com/power-armor/",
+  "status": "source-reported",
+  "reuseRule": "unknown",
+  "robots": [
+    {
+      "id": "Light Cone",
+      "effects": [],
+      "gorillaApplicability": "unknown"
+    },
+    {
+      "id": "Hercules α",
+      "effects": [],
+      "gorillaApplicability": "unknown"
+    },
+    {
+      "id": "Ranger",
+      "effects": [],
+      "gorillaApplicability": "unknown"
+    },
+    {
+      "id": "Pluto",
+      "effects": [],
+      "gorillaApplicability": "unknown"
+    },
+    {
+      "id": "Atlax",
+      "effects": [],
+      "gorillaApplicability": "unknown"
+    },
+    {
+      "id": "Infercore",
+      "effects": [],
+      "gorillaApplicability": "unknown"
+    },
+    {
+      "id": "Phantom Cat",
+      "effects": [],
+      "gorillaApplicability": "unknown"
+    },
+    {
+      "id": "Halo",
+      "effects": [],
+      "gorillaApplicability": "unknown"
+    },
+    {
+      "id": "Yokozuna",
+      "effects": [],
+      "gorillaApplicability": "unknown"
+    },
+    {
+      "id": "Musashimaru",
+      "effects": [],
+      "gorillaApplicability": "unknown"
+    },
+    {
+      "id": "Bastion",
+      "effects": [],
+      "gorillaApplicability": "unknown"
+    },
+    {
+      "id": "Dauntless",
+      "effects": [],
+      "gorillaApplicability": "unknown"
+    }
+  ]
+}

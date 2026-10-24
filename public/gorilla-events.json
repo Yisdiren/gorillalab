@@ -1,0 +1,195 @@
+{
+  "version": 1,
+  "source": "https://lojxlab.com/gorilla-legion/ — WaysToDie & pikaboo creator baselines; player-configured schedule",
+  "verification": "guide-reported-not-independently-verified",
+  "adaShieldRule": {
+    "heroId": "Ada",
+    "skill": "second war skill",
+    "minimumShieldbearers": 1000,
+    "verification": "pending"
+  },
+  "events": [
+    {
+      "id": "space",
+      "day": "Monday",
+      "name": "Space Gorilla",
+      "startingRatio": {
+        "shield": 0,
+        "bomber": 20,
+        "shooter": 80
+      },
+      "bonuses": [
+        {
+          "category": "satellite",
+          "reportedBoostPercent": 1000,
+          "strength": "daily-boost",
+          "baseValue": null,
+          "damageMultiplier": null
+        }
+      ],
+      "mechanicsStatus": "unknown",
+      "ratioStatus": "starting-recommendation-not-proven-optimum"
+    },
+    {
+      "id": "wise",
+      "day": "Tuesday",
+      "name": "Wise Gorilla",
+      "startingRatio": {
+        "shield": 0,
+        "bomber": 10,
+        "shooter": 90
+      },
+      "bonuses": [
+        {
+          "category": "technology",
+          "reportedBoostPercent": 1000,
+          "strength": "daily-boost",
+          "baseValue": null,
+          "damageMultiplier": null
+        }
+      ],
+      "mechanicsStatus": "unknown",
+      "ratioStatus": "starting-recommendation-not-proven-optimum"
+    },
+    {
+      "id": "cyber",
+      "day": "Wednesday",
+      "name": "Cyber Gorilla",
+      "startingRatio": {
+        "shield": 0,
+        "bomber": 10,
+        "shooter": 90
+      },
+      "bonuses": [
+        {
+          "category": "power-armor",
+          "reportedBoostPercent": 1000,
+          "strength": "daily-boost",
+          "baseValue": null,
+          "damageMultiplier": null
+        }
+      ],
+      "mechanicsStatus": "unknown",
+      "ratioStatus": "starting-recommendation-not-proven-optimum"
+    },
+    {
+      "id": "primal",
+      "day": "Thursday",
+      "name": "Primal Gorilla",
+      "startingRatio": {
+        "shield": 0,
+        "bomber": 20,
+        "shooter": 80
+      },
+      "bonuses": [
+        {
+          "category": "tome",
+          "reportedBoostPercent": 1000,
+          "strength": "daily-boost",
+          "baseValue": null,
+          "damageMultiplier": null
+        }
+      ],
+      "mechanicsStatus": "unknown",
+      "ratioStatus": "starting-recommendation-not-proven-optimum"
+    },
+    {
+      "id": "armed",
+      "day": "Friday",
+      "name": "Armed Gorilla",
+      "startingRatio": {
+        "shield": 0,
+        "bomber": 15,
+        "shooter": 85
+      },
+      "bonuses": [
+        {
+          "category": "hero-equipment",
+          "reportedBoostPercent": 1000,
+          "strength": "daily-boost",
+          "baseValue": null,
+          "damageMultiplier": null
+        }
+      ],
+      "mechanicsStatus": "unknown",
+      "ratioStatus": "starting-recommendation-not-proven-optimum"
+    },
+    {
+      "id": "treasure",
+      "day": "Saturday",
+      "name": "Treasure Gorilla",
+      "startingRatio": {
+        "shield": 0,
+        "bomber": 10,
+        "shooter": 90
+      },
+      "bonuses": [
+        {
+          "category": "collection",
+          "reportedBoostPercent": 1000,
+          "strength": "daily-boost",
+          "baseValue": null,
+          "damageMultiplier": null
+        }
+      ],
+      "mechanicsStatus": "unknown",
+      "ratioStatus": "starting-recommendation-not-proven-optimum"
+    },
+    {
+      "id": "warlord",
+      "day": "Sunday",
+      "name": "Gorilla Warlord",
+      "startingRatio": {
+        "shield": 0,
+        "bomber": 10,
+        "shooter": 90
+      },
+      "bonuses": [
+        {
+          "category": "satellite",
+          "reportedBoostPercent": 0,
+          "strength": "normal",
+          "baseValue": null,
+          "damageMultiplier": null
+        },
+        {
+          "category": "technology",
+          "reportedBoostPercent": 0,
+          "strength": "normal",
+          "baseValue": null,
+          "damageMultiplier": null
+        },
+        {
+          "category": "tome",
+          "reportedBoostPercent": 0,
+          "strength": "normal",
+          "baseValue": null,
+          "damageMultiplier": null
+        },
+        {
+          "category": "power-armor",
+          "reportedBoostPercent": 0,
+          "strength": "normal",
+          "baseValue": null,
+          "damageMultiplier": null
+        },
+        {
+          "category": "hero-equipment",
+          "reportedBoostPercent": 0,
+          "strength": "normal",
+          "baseValue": null,
+          "damageMultiplier": null
+        },
+        {
+          "category": "collection",
+          "reportedBoostPercent": 0,
+          "strength": "normal",
+          "baseValue": null,
+          "damageMultiplier": null
+        }
+      ],
+      "mechanicsStatus": "unknown",
+      "ratioStatus": "starting-recommendation-not-proven-optimum"
+    }
+  ]
+}

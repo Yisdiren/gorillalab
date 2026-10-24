@@ -1,0 +1,81 @@
+import { compareRatioBattles } from "../ratio-testing";
+import { robotsEnabledForEvent } from "../robots";
+import { useState } from "react";
+import { battlesForServer, emptyBattle, exportBattleCSV, exportBattleJSON, importBattles, loadBattles, saveBattle, type Battle } from "../battles";
+import { eventData, eventDisplayName } from "../data/events";
+import { validRatio, type Triple } from "../engine";
+import type { PlayerProfile, Storage } from "../profiles";
+import type { ResultSnapshot } from "./FormationResults";
+
+function download(name: string, content: string, type: string) {
+  const url = URL.createObjectURL(new Blob([content], { type }));
+  const link = document.createElement("a"); link.href = url; link.download = name; document.body.appendChild(link); link.click(); link.remove(); setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+export type BattleHistoryStart = { formationIndex: number; eventId: string; server: number | null };
+export function BattleHistory({ storage, profile, snapshot, start = null }: { storage: Storage; profile: PlayerProfile | null; snapshot: ResultSnapshot | null; start?: BattleHistoryStart | null }) {
+  const [initial] = useState(() => { try { return { records: loadBattles(storage), error: "" }; } catch (e) { return { records: [], error: String(e) }; } });
+  const [records, setRecords] = useState(initial.records);
+  const [server, setServer] = useState<string>(() => { const value = start?.server ?? profile?.serverNumber; return value == null ? "" : String(value); });
+  const [eventId, setEventId] = useState(start?.eventId ?? snapshot?.formations[0]?.event.id ?? "space");
+  const [date, setDate] = useState(""); const [damage, setDamage] = useState("");
+  const [kind, setKind] = useState<Battle["attackKind"]>(start ? "individual" : "unknown");
+  const [observedAt,setObservedAt]=useState(""); const [testGroup,setTestGroup]=useState(""); const [testSetup,setTestSetup]=useState(""); const [conditionsConfirmed,setConditionsConfirmed]=useState(false);
+  const [notes, setNotes] = useState(""); const [reportedRatio, setReportedRatio] = useState("");
+  const [attach, setAttach] = useState(!!start); const [formationIndex, setFormationIndex] = useState(start?.formationIndex ?? 0);
+  const [message, setMessage] = useState(initial.error);
+  const [left, setLeft] = useState(""); const [right, setRight] = useState("");
+  const serverNumber = server === "" ? null : Number(server);
+  const filtered = serverNumber === null ? [] : battlesForServer(records, serverNumber);
+  const a = filtered.find(b => b.id === left), b = filtered.find(b => b.id === right);
+  const comparison = a && b ? compareRatioBattles(a, b) : null;
+  const canAttach = kind === "individual" && !!snapshot && snapshot.profile.serverNumber === serverNumber && snapshot.formations[formationIndex]?.event.id === eventId;
+  function requireServer() { if (serverNumber === null || !Number.isSafeInteger(serverNumber) || serverNumber < 0) throw new Error("Enter a valid server number; different servers remain separate."); return serverNumber; }
+  return <div className="management-layout"><section className="panel"><div className="panel-heading"><div><span className="eyebrow">LOCAL, PERSONAL RECORDS</span><h2>Battle history & testing</h2></div></div><p className="muted">Manual observations are actual reported damage, separate from heuristic scores. Unknown dates, lineups, counts and aggregation stay unknown. Five-attack totals are never treated as individual hits.</p>
+    <label>Server to view / import<input type="number" min="0" step="1" placeholder="Required" value={server} onChange={e => { setServer(e.target.value); setLeft(""); setRight(""); }} /></label><p role="status">{message}</p>
+    <div className="field-grid"><label>Gorilla type<select value={eventId} onChange={e => setEventId(e.target.value)}>{eventData.events.map(event => <option key={event.id} value={event.id}>{eventDisplayName(event.id)}</option>)}</select></label><label>Battle date (blank = unknown)<input type="date" value={date} onInput={e => setDate(e.currentTarget.value)} onChange={e => setDate(e.target.value)} /></label><label>Reported damage<input type="number" min="0" step="1" value={damage} onChange={e => setDamage(e.target.value)} /></label><label>Attack aggregation<select value={kind} onChange={e => { setKind(e.target.value as Battle["attackKind"]); setAttach(false); }}><option value="unknown">Unknown — requires verification</option><option value="individual">Individual attack</option><option value="five-attack-total">Total over five attacks</option></select></label><label>Reported ratio, optional (Shield/Bomber/Shooter)<input placeholder="0/10/90 — scope unknown" value={reportedRatio} onChange={e => setReportedRatio(e.target.value)} /></label><label>Notes<textarea value={notes} onChange={e => setNotes(e.target.value)} /></label></div>
+    <details><summary>Ratio-test conditions and optional time</summary><label>Battle time (ISO with timezone, optional)<input placeholder="2026-10-24T12:30:00-04:00" value={observedAt} onChange={e=>setObservedAt(e.target.value)} /></label><label>Test group identifier<input maxLength={100} value={testGroup} onChange={e=>{setTestGroup(e.target.value);setConditionsConfirmed(false);}} /></label><label>Relevant setup conditions<textarea maxLength={2000} placeholder="Boss/round, troop level, event-system upgrades and other held-constant conditions" value={testSetup} onChange={e=>{setTestSetup(e.target.value);setConditionsConfirmed(false);}} /></label><label className="checkbox-label"><input type="checkbox" checked={conditionsConfirmed} onChange={e=>setConditionsConfirmed(e.target.checked)} />I confirm the recorded relevant setup conditions were checked and held constant for this test group.</label><p className="muted">Only confirm what you actually know. Missing skill/equipment details, boss conditions, troop level or event upgrades must not be assumed. Troop counts are not required; count-dependent triggers remain unverified.</p></details>
+    <label className="checkbox-label"><input type="checkbox" checked={attach && canAttach} disabled={!canAttach} onChange={e => setAttach(e.target.checked)} /> Attach generated individual formation, troops, robots and progression snapshot</label>
+    {snapshot && <label>Generated formation snapshot<select value={formationIndex} onChange={e => setFormationIndex(Number(e.target.value))}>{snapshot.formations.map((_, i) => <option key={i} value={i}>Formation {i + 1}</option>)}</select></label>}
+    <p className="muted">Snapshot attachment requires an individual attack with the same server and Gorilla as the generated result. A five-attack total cannot be assigned one lineup without evidence.</p>
+    <button className="primary" onClick={() => { try {
+      const target = requireServer(); if (damage.trim() === "") throw new Error("Enter reported damage, including zero if appropriate.");
+      const record = emptyBattle(crypto.randomUUID(), target, eventId);
+      if(observedAt.trim())record.observedAt=observedAt.trim();
+      if(conditionsConfirmed){if(!testGroup.trim()||!testSetup.trim())throw new Error("Enter the test group and known relevant conditions before confirming.");record.testConditions={group:testGroup.trim(),setup:testSetup.trim(),confirmed:true};}
+      record.damage = Number(damage); record.date = date || null; record.attackKind = kind; record.attackCount = kind === "individual" ? 1 : kind === "five-attack-total" ? 5 : null; record.notes = notes;
+      if (profile?.serverNumber === target) { record.profileId = profile.id; record.playerName = profile.name; }
+      if (reportedRatio.trim()) { const values = reportedRatio.split("/").map(Number); const ratio = { shield: values[0], bomber: values[1], shooter: values[2] }; if (values.length !== 3 || !validRatio(ratio)) throw new Error("Reported ratio must contain three percentages totaling 100."); record.ratios = { mode: "unknown", ratio }; }
+      if (attach && canAttach && snapshot) {
+        const formation = snapshot.formations[formationIndex];
+        if (formation.constraints.troopCountSource === "planned-from-total") throw new Error("Planned counts cannot be saved as actual deployments; confirm troops and generate first.");
+        record.profileId = snapshot.profile.id; record.playerName = snapshot.profile.name;
+        record.formation = formation.teams.map(t => ({ Left: t.heroes.Left.id, Middle: t.heroes.Middle.id, Right: t.heroes.Right.id })) as Battle["formation"];
+        record.ratios = snapshot.ratioModes?.[formationIndex] ? structuredClone(snapshot.ratioModes[formationIndex]) : { mode: "Independent", ratios: formation.teams.map(t => ({ ...t.ratio })) as Triple<typeof formation.teams[number]["ratio"]> };
+        record.troopCounts = formation.teams.every(t => t.troopCounts) ? formation.teams.map(t => ({ ...t.troopCounts! })) as Battle["troopCounts"] : null;
+        record.robotIds = robotsEnabledForEvent(formation.event.id) ? snapshot.profile.teamRobotIds ?? [null, null, null] : [null, null, null]; record.progressionSnapshot = structuredClone(snapshot.profile);
+      }
+      setRecords(saveBattle(storage, record)); setMessage("Battle saved locally. No public profile or other server was changed."); setDamage("");
+    } catch (e) { setMessage(String(e)); } }}>Save battle record</button>
+  </section>
+  <section className="panel"><h2>Import / export this server</h2><p className="muted">JSON and GorillaLab CSV preserve nested snapshots and null values. CSV cells use JSON encoding for lossless round trips and spreadsheet formula safety. Imports validate atomically and reject cross-server batches and conflicting duplicate IDs.</p><div className="button-row"><button className="secondary" onClick={() => { try { const s = requireServer(); download(`gorillalab-${s}.json`, exportBattleJSON(records, s), "application/json"); } catch (e) { setMessage(String(e)); } }}>Export JSON</button><button className="secondary" onClick={() => { try { const s = requireServer(); download(`gorillalab-${s}.csv`, exportBattleCSV(records, s), "text/csv"); } catch (e) { setMessage(String(e)); } }}>Export CSV</button></div><label>Import JSON or CSV<input type="file" accept=".json,.csv" onChange={async e => { const input = e.currentTarget; const file = input.files?.[0]; if (!file) return; try { const s = requireServer(); if (file.size > 5_000_000) throw new Error("File exceeds 5 MB."); setRecords(importBattles(storage, await file.text(), file.name.toLowerCase().endsWith(".csv") ? "csv" : "json", s)); setMessage("Import complete for this server only."); } catch (error) { setMessage(String(error)); } finally { input.value = ""; } }} /></label><a href={`${import.meta.env.BASE_URL}optional-stiletto260.json`} download>Download optional Stiletto Server 260 test data</a><p className="muted">Download only: the optional records are never auto-imported. Most metadata and individual/aggregate status are unknown; the two dated five-attack totals are labeled explicitly. Missing metadata excludes them from controlled optimization.</p></section>
+  <section className="panel"><h2>Server {server || "—"} records · {filtered.length}</h2><div className="history-table"><table><thead><tr><th>Date</th><th>Gorilla</th><th>Reported damage</th><th>Aggregation</th><th>Metadata</th></tr></thead><tbody>{filtered.map(record => <tr key={record.id}><td>{record.date ?? record.observedAt ?? "Unknown"}</td><td>{eventDisplayName(record.eventId)}</td><td>{record.damage.toLocaleString()}</td><td>{record.attackKind}</td><td>{record.formation ? "Lineup snapshot" : "Lineup unknown"} · {record.robotIds ? "Robot choices saved" : "Robots unknown"}<BattleRecordDetails record={record} /></td></tr>)}</tbody></table></div>
+    <div className="field-grid"><label>First battle<select value={left} onChange={e => setLeft(e.target.value)}><option value="">Select record</option>{filtered.map(record => <option key={record.id} value={record.id}>{eventDisplayName(record.eventId)} · {record.date ?? record.observedAt ?? "date unknown"} · {record.damage}</option>)}</select></label><label>Second battle<select value={right} onChange={e => setRight(e.target.value)}><option value="">Select record</option>{filtered.map(record => <option key={record.id} value={record.id}>{eventDisplayName(record.eventId)} · {record.date ?? "date unknown"} · {record.damage}</option>)}</select></label></div>{comparison && <div className="notice"><strong>{comparison.comparable ? `Observed difference: ${comparison.damageDifference?.toLocaleString()}` : "Comparison blocked"}</strong><ul>{comparison.blocked.map((text, i) => <li key={i}>{text}</li>)}</ul><p>{comparison.percentDifference===null?"Percentage difference unavailable.":`Observed percentage difference: ${comparison.percentDifference.toFixed(2)}%.`}</p>{comparison.limitations.map(text=><p key={text}>{text}</p>)}</div>}
+  </section></div>;
+}
+
+
+function BattleRecordDetails({ record }: { record: Battle }) {
+  const progress = record.progressionSnapshot;
+  const ratios = record.ratios?.mode === "Independent" ? record.ratios.ratios : record.ratios ? [record.ratios.ratio] : null;
+  return <details className="battle-record-detail"><summary>View record</summary>
+    <p>Player: {record.playerName ?? "unknown"} · Server {record.server}<br />Source: {record.provenance}. Aggregation: {record.attackKind}; attack count {record.attackCount ?? "unknown"}.</p>
+    <p>Ratios: {ratios ? ratios.map(r => `${r.shield}/${r.bomber}/${r.shooter}`).join(" · ") : "unknown"}. Scope: {record.ratios?.mode ?? "unknown"}. Shieldbearer / Bomber / Shooter.</p>
+    {record.formation ? <ul>{record.formation.map((team, i) => <li key={i}>Team {i + 1}: Left {team.Left}, Middle {team.Middle}, Right {team.Right}.</li>)}</ul> : <p>Formation unknown.</p>}
+    <p>Troop counts: {record.troopCounts ? record.troopCounts.map(c => `${c.shield}/${c.bomber}/${c.shooter}`).join(" · ") : "unknown"}.</p>
+    <p>Robots: {record.robotIds ? record.robotIds.map(id => id ?? "None").join(" / ") : "unknown"}.</p>
+    {progress ? <><p>Saved progression snapshot: {progress.name}, season {progress.currentSeason ?? "unknown"}. This is the recorded setup, not the player's current profile.</p><ul>{progress.ownedHeroes.map(hero => <li key={hero.heroId}>{hero.heroId}: {hero.stars ?? "unknown"} stars; skills {Object.entries(hero.skillLevels).map(([name, level]) => `${name} level ${level}`).join(", ") || "unknown"}; equipment {hero.equipment.map(item => `${item.name || "unknown"} level ${item.level ?? "unknown"}`).join(", ") || "unknown"}; exclusive equipment {hero.exclusiveEquipment ? `${hero.exclusiveEquipment.name || "unknown"} level ${hero.exclusiveEquipment.level ?? "unknown"}` : "unknown"}.</li>)}</ul><ul>{progress.ownedRobots.map(robot => <li key={robot.robotId}>{robot.robotId}: level {robot.level ?? "unknown"}; cores {Object.entries(robot.cores ?? {}).map(([name, value]) => `${name} ${value ?? "unknown"}`).join(", ") || "unknown"}; upgrades {Object.entries(robot.upgrades).map(([name, value]) => `${name} ${value}`).join(", ") || "unknown"}.</li>)}</ul></> : <p>Progression snapshot unknown.</p>}
+    <p>Observed time: {record.observedAt??"unknown"}. Test group: {record.testConditions?.group??"unknown"}. Conditions: {record.testConditions?.setup??"unknown / not confirmed"}.</p>
+    <p>Notes: {record.notes || "none entered"}. Missing metadata is not inferred.</p>
+  </details>;
+}
+

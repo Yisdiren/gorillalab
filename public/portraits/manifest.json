@@ -1,0 +1,546 @@
+{
+  "version": 1,
+  "sourceProject": "D:\\lands-of-jail-trial-cage-generator",
+  "sourceDirectory": "public/icons",
+  "licenseStatus": "public-redistribution-permission-unverified",
+  "copiedWithoutModification": true,
+  "portraits": [
+    {
+      "heroId": "Ada",
+      "heroName": "Ada",
+      "sourceHeroName": "Ada",
+      "file": "ada.png",
+      "match": "exact-source-name",
+      "evidence": [
+        "app/page.tsx: heroIconNames + heroIconPath"
+      ],
+      "bytes": 26369,
+      "sha256": "9bc7c0d2290fb64dcfc7258df015438458a99fb4e9e80ee07b6a1ff3e0156455"
+    },
+    {
+      "heroId": "Ryuichi Ito",
+      "heroName": "Ryuichi Ito",
+      "sourceHeroName": "Ryuichi",
+      "file": "ryuichi.png",
+      "match": "documented-alias",
+      "evidence": [
+        "app/page.tsx: heroIconNames + heroIconPath",
+        "docs/ssr-war-ee-coverage.md: Ryuichi links to https://lojxlab.com/heropedia/ryuichi-ito/",
+        "data/heroes.ts: Ryuichi, White Phantom; external reference names Ryuichi Ito and White Phantom"
+      ],
+      "bytes": 24670,
+      "sha256": "c6f778a7ebc6ba3e1a1a0a77ed2f4ea727a833e86c77555c4ca888b147f879c7"
+    },
+    {
+      "heroId": "Tyronn",
+      "heroName": "Tyronn",
+      "sourceHeroName": "Tyronn",
+      "file": "tyronn.png",
+      "match": "exact-source-name",
+      "evidence": [
+        "app/page.tsx: heroIconNames + heroIconPath"
+      ],
+      "bytes": 22036,
+      "sha256": "c4adbd63c972c315adcf32ee328832b6b2f4ef990736733a91ef38c455040792"
+    },
+    {
+      "heroId": "Mireya",
+      "heroName": "Mireya",
+      "sourceHeroName": "Mireya",
+      "file": "mireya.png",
+      "match": "exact-source-name",
+      "evidence": [
+        "app/page.tsx: heroIconNames + heroIconPath"
+      ],
+      "bytes": 23682,
+      "sha256": "8504df8acfb773b6bedff58138e5df6df8701343ff8f0027ca4f7e2a192ce1e4"
+    },
+    {
+      "heroId": "Koschevoi",
+      "heroName": "Koschevoi",
+      "sourceHeroName": "Koschevoi",
+      "file": "koschevoi.png",
+      "match": "exact-source-name",
+      "evidence": [
+        "app/page.tsx: heroIconNames + heroIconPath"
+      ],
+      "bytes": 25885,
+      "sha256": "11e2f88fb3a2d72a2c23e8f0f96631b6cac216ac86e9b3c5804e8bc820a57ab2"
+    },
+    {
+      "heroId": "Phoenix",
+      "heroName": "Phoenix",
+      "sourceHeroName": "Phoenix",
+      "file": "phoenix.png",
+      "match": "exact-source-name",
+      "evidence": [
+        "app/page.tsx: heroIconNames + heroIconPath"
+      ],
+      "bytes": 22331,
+      "sha256": "ae9b4dc2d192bcc85921c03aba1303e8c8cb7891e3bebbd162b1a974ba90fef2"
+    },
+    {
+      "heroId": "Drake",
+      "heroName": "Drake",
+      "sourceHeroName": "Drake",
+      "file": "drake.png",
+      "match": "exact-source-name",
+      "evidence": [
+        "app/page.tsx: heroIconNames + heroIconPath"
+      ],
+      "bytes": 26499,
+      "sha256": "f3408b9a111eb85d59790b47cbe8a1d77a447abed9fe0b65960ca9d70c5f0f73"
+    },
+    {
+      "heroId": "Flameborne",
+      "heroName": "Flameborne",
+      "sourceHeroName": "Flameborne",
+      "file": "flameborne.png",
+      "match": "exact-source-name",
+      "evidence": [
+        "app/page.tsx: heroIconNames + heroIconPath"
+      ],
+      "bytes": 22792,
+      "sha256": "03db20c2a71640cf4dde3b9b354f63e34fb6c17b14bfd252b985b4590b3f7b2f"
+    },
+    {
+      "heroId": "Xuanming",
+      "heroName": "Xuanming",
+      "sourceHeroName": "Xuanming",
+      "file": "xuanming.png",
+      "match": "exact-source-name",
+      "evidence": [
+        "app/page.tsx: heroIconNames + heroIconPath"
+      ],
+      "bytes": 25843,
+      "sha256": "a46fed4b47c0ee8d111dc117e7caca08f651e8821acc0d90a24823bbf67b2ea9"
+    },
+    {
+      "heroId": "Vivian",
+      "heroName": "Vivian",
+      "sourceHeroName": "Vivian",
+      "file": "vivian.png",
+      "match": "exact-source-name",
+      "evidence": [
+        "app/page.tsx: heroIconNames + heroIconPath"
+      ],
+      "bytes": 21806,
+      "sha256": "f7746f3d2838ba13ac18e41cde3b6c4adecb36a08c44c5e4cfb31a258c84dc51"
+    },
+    {
+      "heroId": "Tormund",
+      "heroName": "Tormund",
+      "sourceHeroName": "Tormund",
+      "file": "tormund.png",
+      "match": "exact-source-name",
+      "evidence": [
+        "app/page.tsx: heroIconNames + heroIconPath"
+      ],
+      "bytes": 22204,
+      "sha256": "5670892bf810f3279071b473de1254943d70dbc66fa86983c4dd6eaf598e2e6e"
+    },
+    {
+      "heroId": "Inata",
+      "heroName": "Inata",
+      "sourceHeroName": "Inata",
+      "file": "inata.png",
+      "match": "exact-source-name",
+      "evidence": [
+        "app/page.tsx: heroIconNames + heroIconPath"
+      ],
+      "bytes": 20996,
+      "sha256": "9a42ad27eb37d6bec505f483ea5499aaee0ce20685f5ae608fe4cb953de771cd"
+    },
+    {
+      "heroId": "Devilian",
+      "heroName": "Devilian",
+      "sourceHeroName": "Devilian",
+      "file": "devilian.png",
+      "match": "exact-source-name",
+      "evidence": [
+        "app/page.tsx: heroIconNames + heroIconPath"
+      ],
+      "bytes": 20662,
+      "sha256": "d030b628e63ac7e4db5aa7beef003304e568375f80353d759dc9fd10af035356"
+    },
+    {
+      "heroId": "Mia",
+      "heroName": "Mia",
+      "sourceHeroName": "Mia Scarlet Pyros",
+      "file": "mia-scarlet-pyros.png",
+      "match": "documented-alias",
+      "evidence": [
+        "app/page.tsx: heroIconNames + heroIconPath",
+        "data/heroes.ts: name Mia Scarlet Pyros, displayName Mia"
+      ],
+      "bytes": 24655,
+      "sha256": "e58f7413cafed6ed6177b0cb507c4877defafaad4abc360becaad03cce7c365c"
+    },
+    {
+      "heroId": "Caesar",
+      "heroName": "Caesar",
+      "sourceHeroName": "Caesar",
+      "file": "caesar.png",
+      "match": "exact-source-name",
+      "evidence": [
+        "app/page.tsx: heroIconNames + heroIconPath"
+      ],
+      "bytes": 23484,
+      "sha256": "cc8b51a26eb49161e54b33c2648b3a63d343bd2512822954f4c9c109f3d08d4c"
+    },
+    {
+      "heroId": "Lanchester",
+      "heroName": "Lanchester",
+      "sourceHeroName": "Lanchester",
+      "file": "lanchester.png",
+      "match": "exact-source-name",
+      "evidence": [
+        "app/page.tsx: heroIconNames + heroIconPath"
+      ],
+      "bytes": 23159,
+      "sha256": "430afbfb5729bc16582d6e45f721e84b02cccbc5679a9f7d1038852a38aeb76e"
+    },
+    {
+      "heroId": "Alph",
+      "heroName": "Alph",
+      "sourceHeroName": "Alph",
+      "file": "alph.png",
+      "match": "exact-source-name",
+      "evidence": [
+        "app/page.tsx: heroIconNames + heroIconPath"
+      ],
+      "bytes": 25051,
+      "sha256": "a08759f895200b63e91807888d6111031f4a8316d6bdc6f5e927fbb26e13ae42"
+    },
+    {
+      "heroId": "Whisper",
+      "heroName": "Whisper",
+      "sourceHeroName": "Whisper",
+      "file": "whisper.png",
+      "match": "exact-source-name",
+      "evidence": [
+        "app/page.tsx: heroIconNames + heroIconPath"
+      ],
+      "bytes": 21428,
+      "sha256": "425d2ebd86ade14a1c26b7966649b9189107f84d42c1db55f7f8d387f73fca40"
+    },
+    {
+      "heroId": "Sawyer",
+      "heroName": "Sawyer",
+      "sourceHeroName": "Sawyer",
+      "file": "sawyer.png",
+      "match": "exact-source-name",
+      "evidence": [
+        "app/page.tsx: heroIconNames + heroIconPath"
+      ],
+      "bytes": 24701,
+      "sha256": "c6fec61cf21e01c7cfc61ead6dfd7d22e0d8f4f4166db8708be9a0d3cd9cbe6a"
+    },
+    {
+      "heroId": "Veronica",
+      "heroName": "Veronica",
+      "sourceHeroName": "Veronica",
+      "file": "veronica.png",
+      "match": "exact-source-name",
+      "evidence": [
+        "app/page.tsx: heroIconNames + heroIconPath"
+      ],
+      "bytes": 22503,
+      "sha256": "e46bff0d4d649513f155a4d3e51c1c21294f5567faf435ee423a196439c1dd3f"
+    },
+    {
+      "heroId": "Zoltan",
+      "heroName": "Zoltan",
+      "sourceHeroName": "Zoltan",
+      "file": "zoltan.png",
+      "match": "exact-source-name",
+      "evidence": [
+        "app/page.tsx: heroIconNames + heroIconPath"
+      ],
+      "bytes": 27560,
+      "sha256": "225ef08a7f17589ffe2d2be91ec6fb708f2615d77d2bd6e1b1011849d02bee11"
+    },
+    {
+      "heroId": "Marcus",
+      "heroName": "Marcus",
+      "sourceHeroName": "Marcus",
+      "file": "marcus.png",
+      "match": "exact-source-name",
+      "evidence": [
+        "app/page.tsx: heroIconNames + heroIconPath"
+      ],
+      "bytes": 29438,
+      "sha256": "b8ef3bbde071199a2e136cf614160b53dd4497836bd3947216681ee81f4c9019"
+    },
+    {
+      "heroId": "Lee",
+      "heroName": "Lee",
+      "sourceHeroName": "Lee",
+      "file": "lee.png",
+      "match": "exact-source-name",
+      "evidence": [
+        "app/page.tsx: heroIconNames + heroIconPath"
+      ],
+      "bytes": 23333,
+      "sha256": "40fd0a61b781f06e89e21aa581407053e0604d2340048318d40f8c90bd132c8f"
+    },
+    {
+      "heroId": "Edwin",
+      "heroName": "Edwin",
+      "sourceHeroName": "Edwin",
+      "file": "edwin.png",
+      "match": "exact-source-name",
+      "evidence": [
+        "app/page.tsx: heroIconNames + heroIconPath"
+      ],
+      "bytes": 21915,
+      "sha256": "edb1a991611b71ebdb08c7fd8176ae1e64bb5171e9529b485ad5c10b533e2844"
+    },
+    {
+      "heroId": "Otto",
+      "heroName": "Otto",
+      "sourceHeroName": "Otto",
+      "file": "otto.png",
+      "match": "exact-source-name",
+      "evidence": [
+        "app/page.tsx: heroIconNames + heroIconPath"
+      ],
+      "bytes": 181522,
+      "sha256": "7be69e08b5bc9c7f4c37e8bec59e4e44448d003e1435e9ced8305b3cd2366e2c"
+    },
+    {
+      "heroId": "Wukong",
+      "heroName": "Wukong",
+      "sourceHeroName": "Wukong",
+      "file": "wukong.jpg",
+      "match": "exact-source-name",
+      "evidence": [
+        "app/page.tsx: heroIconNames + heroIconPath"
+      ],
+      "bytes": 1234,
+      "sha256": "a9dffac8b0b6195c40dbd4600ab36475ee8460d4ca53808ebd3b84c52af59c04"
+    },
+    {
+      "heroId": "Worrell",
+      "heroName": "Worrell",
+      "sourceHeroName": "Worrell",
+      "file": "worrell.jpg",
+      "match": "exact-source-name",
+      "evidence": [
+        "app/page.tsx: heroIconNames + heroIconPath"
+      ],
+      "bytes": 1314,
+      "sha256": "dbdb54520552c69d214206082303a125bcc98352b49783f17b9a1a13bf6a23ad"
+    },
+    {
+      "heroId": "Kate",
+      "heroName": "Kate",
+      "sourceHeroName": "Kate",
+      "file": "kate.jpg",
+      "match": "exact-source-name",
+      "evidence": [
+        "app/page.tsx: heroIconNames + heroIconPath"
+      ],
+      "bytes": 1179,
+      "sha256": "3261819c24bdc6a6d133d9452844cec8af8945cd4360fc139ee5ad5218f644f4"
+    },
+    {
+      "heroId": "Fran & Pike",
+      "heroName": "Fran & Pike",
+      "sourceHeroName": "Fran & Pike",
+      "file": "fran-pike.jpg",
+      "match": "exact-source-name",
+      "evidence": [
+        "app/page.tsx: heroIconNames + heroIconPath"
+      ],
+      "bytes": 3732,
+      "sha256": "407db3809600bbf8814d70b751767852dd77f0e8ea94ef800eb786bda9863223"
+    },
+    {
+      "heroId": "Boogie",
+      "heroName": "Boogie",
+      "sourceHeroName": "Boogie",
+      "file": "boogie.jpg",
+      "match": "exact-source-name",
+      "evidence": [
+        "app/page.tsx: heroIconNames + heroIconPath"
+      ],
+      "bytes": 3795,
+      "sha256": "6e4defca1c8bfad3e2e65f42720fa24d759a064e759e30f159c7080666d462d4"
+    },
+    {
+      "heroId": "Rin",
+      "heroName": "Rin",
+      "sourceHeroName": "Rin",
+      "file": "rin.jpg",
+      "match": "exact-source-name",
+      "evidence": [
+        "app/page.tsx: heroIconNames + heroIconPath"
+      ],
+      "bytes": 3813,
+      "sha256": "85487a6ecfe20f1c737927afc55452214e11c0b55439d639283f0ec574f93e5e"
+    },
+    {
+      "heroId": "Rex",
+      "heroName": "Rex",
+      "sourceHeroName": "Rex",
+      "file": "rex.jpg",
+      "match": "exact-source-name",
+      "evidence": [
+        "app/page.tsx: heroIconNames + heroIconPath"
+      ],
+      "bytes": 3660,
+      "sha256": "07f81eb7473c44be1998354690f015119bcbecd4de8eb11bb9573268ba187774"
+    },
+    {
+      "heroId": "Gerd",
+      "heroName": "Gerd",
+      "sourceHeroName": "Gerd",
+      "file": "gerd.png",
+      "match": "exact-source-name",
+      "evidence": [
+        "app/page.tsx: heroIconNames + heroIconPath"
+      ],
+      "bytes": 43164,
+      "sha256": "f02f46a8e32d48cf949d60078ebf1b0ba62df098cf9118cc924f7aed5419e2dc"
+    },
+    {
+      "heroId": "Vesaryon",
+      "heroName": "Vesaryon",
+      "sourceHeroName": "Vesaryon",
+      "file": "vesaryon.png",
+      "match": "exact-source-name",
+      "evidence": [
+        "app/page.tsx: heroIconNames + heroIconPath"
+      ],
+      "bytes": 38489,
+      "sha256": "7fcf63105bf77301e7ef3f3f87370cabd4544a22bc4c1ff7053150b8af5f979f"
+    },
+    {
+      "heroId": "Lunarl",
+      "heroName": "Lunarl",
+      "sourceHeroName": "Lunarl",
+      "file": "lunarl.png",
+      "match": "exact-source-name",
+      "evidence": [
+        "app/page.tsx: heroIconNames + heroIconPath"
+      ],
+      "bytes": 19505,
+      "sha256": "391d6d53a9c2281596b5ffb674007f3674cd71676b2c3c24813b1a70269cf3a5"
+    },
+    {
+      "heroId": "Samir",
+      "heroName": "Samir",
+      "sourceHeroName": "Samir",
+      "file": "samir.png",
+      "match": "exact-source-name",
+      "evidence": [
+        "app/page.tsx: heroIconNames + heroIconPath"
+      ],
+      "bytes": 24933,
+      "sha256": "cb6ed35206811b8680b4ff4ddc82c9595d254ac5f838f96ae1f0ee5d16fb0011"
+    },
+    {
+      "heroId": "Lofili",
+      "heroName": "Lofili",
+      "sourceHeroName": "Lofili",
+      "file": "lofili.png",
+      "match": "exact-source-name",
+      "evidence": [
+        "app/page.tsx: heroIconNames + heroIconPath"
+      ],
+      "bytes": 20554,
+      "sha256": "94e6b379ca477d2726e2511e266efe2ca837a3945e2854097d4dfc932f72d133"
+    },
+    {
+      "heroId": "Omega Rugal",
+      "heroName": "Omega Rugal",
+      "sourceHeroName": "Omega Rugal",
+      "file": "omega-rugal.png",
+      "match": "exact-source-name",
+      "evidence": [
+        "app/page.tsx: heroIconNames + heroIconPath"
+      ],
+      "bytes": 24395,
+      "sha256": "190c44e5de521e0bbb17b5206723c5ea446a5ad0f7dc290e1a698f214ae38ab7"
+    },
+    {
+      "heroId": "Terry Bogard",
+      "heroName": "Terry Bogard",
+      "sourceHeroName": "Terry Bogard",
+      "file": "terry-bogard.png",
+      "match": "exact-source-name",
+      "evidence": [
+        "app/page.tsx: heroIconNames + heroIconPath"
+      ],
+      "bytes": 25291,
+      "sha256": "54ff20e5104a17f06acc32356be20622683a0083290573fc3a6e48c6e46c67ed"
+    },
+    {
+      "heroId": "Mai Shiranui",
+      "heroName": "Mai Shiranui",
+      "sourceHeroName": "Mai Shiranui",
+      "file": "mai-shiranui.png",
+      "match": "exact-source-name",
+      "evidence": [
+        "app/page.tsx: heroIconNames + heroIconPath"
+      ],
+      "bytes": 25480,
+      "sha256": "03ec42703763434279669b75ce3f8e8281273b094f863b7bf671291649d3e77c"
+    }
+  ],
+  "missing": [
+    { "heroId": "Iwado", "heroName": "Iwado", "reason": "No reviewed portrait asset in GorillaLab; Iwakado is not an alias. Use fallback." },
+    {
+      "heroId": "Iwakado",
+      "heroName": "Iwakado",
+      "reason": "Source has Iwado/iwado.png; alias is not established. No match guessed."
+    },
+    {
+      "heroId": "Ekko",
+      "heroName": "Ekko",
+      "reason": "No matching portrait in source heroIconNames."
+    },
+    {
+      "heroId": "Gimes",
+      "heroName": "Gimes",
+      "reason": "No matching portrait in source heroIconNames."
+    },
+    {
+      "heroId": "Minyeon & Taehun",
+      "heroName": "Minyeon & Taehun",
+      "reason": "No matching portrait in source heroIconNames."
+    },
+    {
+      "heroId": "Platos",
+      "heroName": "Platos",
+      "reason": "No matching portrait in source heroIconNames."
+    },
+    {
+      "heroId": "Flora",
+      "heroName": "Flora",
+      "reason": "No matching portrait in source heroIconNames."
+    },
+    {
+      "heroId": "Harton",
+      "heroName": "Harton",
+      "reason": "No matching portrait in source heroIconNames."
+    },
+    {
+      "heroId": "Durga",
+      "heroName": "Durga",
+      "reason": "No matching portrait in source heroIconNames."
+    },
+    {
+      "heroId": "Pasino",
+      "heroName": "Pasino",
+      "reason": "No matching portrait in source heroIconNames."
+    },
+    {
+      "heroId": "Aiksen",
+      "heroName": "Aiksen",
+      "reason": "No matching portrait in source heroIconNames."
+    }
+  ]
+}
+

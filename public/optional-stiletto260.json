@@ -1,0 +1,263 @@
+{
+  "version": 1,
+  "records": [
+    {
+      "version": 1,
+      "id": "stiletto260-space-undated",
+      "profileId": null,
+      "playerName": "Stiletto",
+      "server": 260,
+      "eventId": "space",
+      "date": null,
+      "damage": 559430622,
+      "attackKind": "unknown",
+      "attackCount": null,
+      "formation": null,
+      "ratios": {
+        "mode": "unknown",
+        "ratio": {
+          "shield": 0,
+          "bomber": 4,
+          "shooter": 96
+        }
+      },
+      "troopCounts": null,
+      "robotIds": null,
+      "progressionSnapshot": null,
+      "notes": "User-provided optional historical test data. Date, aggregation, formation, per-team ratios, troop counts and progression unverified.",
+      "provenance": "user-provided-history"
+    },
+    {
+      "version": 1,
+      "id": "stiletto260-wise-undated",
+      "profileId": null,
+      "playerName": "Stiletto",
+      "server": 260,
+      "eventId": "wise",
+      "date": null,
+      "damage": 705101965,
+      "attackKind": "unknown",
+      "attackCount": null,
+      "formation": null,
+      "ratios": {
+        "mode": "unknown",
+        "ratio": {
+          "shield": 0,
+          "bomber": 9,
+          "shooter": 91
+        }
+      },
+      "troopCounts": null,
+      "robotIds": null,
+      "progressionSnapshot": null,
+      "notes": "User-provided optional historical test data. Date, aggregation, formation, per-team ratios, troop counts and progression unverified.",
+      "provenance": "user-provided-history"
+    },
+    {
+      "version": 1,
+      "id": "stiletto260-primal-undated",
+      "profileId": null,
+      "playerName": "Stiletto",
+      "server": 260,
+      "eventId": "primal",
+      "date": null,
+      "damage": 178918957,
+      "attackKind": "unknown",
+      "attackCount": null,
+      "formation": null,
+      "ratios": {
+        "mode": "unknown",
+        "ratio": {
+          "shield": 0,
+          "bomber": 29,
+          "shooter": 71
+        }
+      },
+      "troopCounts": null,
+      "robotIds": null,
+      "progressionSnapshot": null,
+      "notes": "User-provided optional historical test data. Date, aggregation, formation, per-team ratios, troop counts and progression unverified.",
+      "provenance": "user-provided-history"
+    },
+    {
+      "version": 1,
+      "id": "stiletto260-cyber-undated",
+      "profileId": null,
+      "playerName": "Stiletto",
+      "server": 260,
+      "eventId": "cyber",
+      "date": null,
+      "damage": 555781497,
+      "attackKind": "unknown",
+      "attackCount": null,
+      "formation": null,
+      "ratios": {
+        "mode": "unknown",
+        "ratio": {
+          "shield": 0,
+          "bomber": 10,
+          "shooter": 90
+        }
+      },
+      "troopCounts": null,
+      "robotIds": null,
+      "progressionSnapshot": null,
+      "notes": "User-provided optional historical test data. Date, aggregation, formation, per-team ratios, troop counts and progression unverified.",
+      "provenance": "user-provided-history"
+    },
+    {
+      "version": 1,
+      "id": "stiletto260-armed-undated",
+      "profileId": null,
+      "playerName": "Stiletto",
+      "server": 260,
+      "eventId": "armed",
+      "date": null,
+      "damage": 350591041,
+      "attackKind": "unknown",
+      "attackCount": null,
+      "formation": null,
+      "ratios": {
+        "mode": "unknown",
+        "ratio": {
+          "shield": 0,
+          "bomber": 4,
+          "shooter": 96
+        }
+      },
+      "troopCounts": null,
+      "robotIds": null,
+      "progressionSnapshot": null,
+      "notes": "User-provided optional historical test data. Date, aggregation, formation, per-team ratios, troop counts and progression unverified.",
+      "provenance": "user-provided-history"
+    },
+    {
+      "version": 1,
+      "id": "stiletto260-treasure-undated",
+      "profileId": null,
+      "playerName": "Stiletto",
+      "server": 260,
+      "eventId": "treasure",
+      "date": null,
+      "damage": 62230113,
+      "attackKind": "unknown",
+      "attackCount": null,
+      "formation": null,
+      "ratios": {
+        "mode": "unknown",
+        "ratio": {
+          "shield": 0,
+          "bomber": 9,
+          "shooter": 91
+        }
+      },
+      "troopCounts": null,
+      "robotIds": null,
+      "progressionSnapshot": null,
+      "notes": "User-provided optional historical test data. Date, aggregation, formation, per-team ratios, troop counts and progression unverified.",
+      "provenance": "user-provided-history"
+    },
+    {
+      "version": 1,
+      "id": "stiletto260-warlord-undated",
+      "profileId": null,
+      "playerName": "Stiletto",
+      "server": 260,
+      "eventId": "warlord",
+      "date": null,
+      "damage": 265492193,
+      "attackKind": "unknown",
+      "attackCount": null,
+      "formation": null,
+      "ratios": {
+        "mode": "unknown",
+        "ratio": {
+          "shield": 0,
+          "bomber": 35,
+          "shooter": 65
+        }
+      },
+      "troopCounts": null,
+      "robotIds": null,
+      "progressionSnapshot": null,
+      "notes": "User-provided optional historical test data. Date, aggregation, formation, per-team ratios, troop counts and progression unverified.",
+      "provenance": "user-provided-history"
+    },
+    {
+      "version": 1,
+      "id": "stiletto260-primal-998882384",
+      "profileId": null,
+      "playerName": "Stiletto",
+      "server": 260,
+      "eventId": "primal",
+      "date": "2026-10-14",
+      "damage": 998882384,
+      "attackKind": "five-attack-total",
+      "attackCount": 5,
+      "formation": null,
+      "ratios": null,
+      "troopCounts": null,
+      "robotIds": null,
+      "progressionSnapshot": null,
+      "notes": "User-provided additional history; missing metadata requires verification. Never infer individual damage from a five-attack total.",
+      "provenance": "user-provided-history"
+    },
+    {
+      "version": 1,
+      "id": "stiletto260-treasure-470272776",
+      "profileId": null,
+      "playerName": "Stiletto",
+      "server": 260,
+      "eventId": "treasure",
+      "date": "2026-10-16",
+      "damage": 470272776,
+      "attackKind": "five-attack-total",
+      "attackCount": 5,
+      "formation": null,
+      "ratios": null,
+      "troopCounts": null,
+      "robotIds": null,
+      "progressionSnapshot": null,
+      "notes": "User-provided additional history; missing metadata requires verification. Never infer individual damage from a five-attack total.",
+      "provenance": "user-provided-history"
+    },
+    {
+      "version": 1,
+      "id": "stiletto260-armed-472327900",
+      "profileId": null,
+      "playerName": "Stiletto",
+      "server": 260,
+      "eventId": "armed",
+      "date": null,
+      "damage": 472327900,
+      "attackKind": "unknown",
+      "attackCount": null,
+      "formation": null,
+      "ratios": null,
+      "troopCounts": null,
+      "robotIds": null,
+      "progressionSnapshot": null,
+      "notes": "User-provided additional history; missing metadata requires verification. Never infer individual damage from a five-attack total.",
+      "provenance": "user-provided-history"
+    },
+    {
+      "version": 1,
+      "id": "stiletto260-armed-485591663",
+      "profileId": null,
+      "playerName": "Stiletto",
+      "server": 260,
+      "eventId": "armed",
+      "date": null,
+      "damage": 485591663,
+      "attackKind": "unknown",
+      "attackCount": null,
+      "formation": null,
+      "ratios": null,
+      "troopCounts": null,
+      "robotIds": null,
+      "progressionSnapshot": null,
+      "notes": "User-provided additional history; missing metadata requires verification. Never infer individual damage from a five-attack total.",
+      "provenance": "user-provided-history"
+    }
+  ]
+}

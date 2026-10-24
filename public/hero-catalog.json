@@ -1,0 +1,740 @@
+{
+  "version": 1,
+  "heroes": [
+    {
+      "id": "Ada",
+      "name": "Ada",
+      "verification": "unverified",
+      "class": null,
+      "seasonAvailability": null,
+      "skillMetadata": {
+        "status": "unknown",
+        "skills": []
+      },
+      "sources": [
+        "https://lojwiki.com/heroes/"
+      ]
+    },
+    {
+      "id": "Ryuichi Ito",
+      "name": "Ryuichi Ito",
+      "verification": "unverified",
+      "class": null,
+      "seasonAvailability": null,
+      "skillMetadata": {
+        "status": "unknown",
+        "skills": []
+      },
+      "sources": [
+        "https://lojwiki.com/heroes/"
+      ]
+    },
+    {
+      "id": "Tyronn",
+      "name": "Tyronn",
+      "verification": "unverified",
+      "class": null,
+      "seasonAvailability": null,
+      "skillMetadata": {
+        "status": "unknown",
+        "skills": []
+      },
+      "sources": [
+        "https://lojwiki.com/heroes/"
+      ]
+    },
+    {
+      "id": "Mireya",
+      "name": "Mireya",
+      "verification": "unverified",
+      "class": null,
+      "seasonAvailability": null,
+      "skillMetadata": {
+        "status": "unknown",
+        "skills": []
+      },
+      "sources": [
+        "https://lojwiki.com/heroes/"
+      ]
+    },
+    {
+      "id": "Koschevoi",
+      "name": "Koschevoi",
+      "verification": "unverified",
+      "class": null,
+      "seasonAvailability": null,
+      "skillMetadata": {
+        "status": "unknown",
+        "skills": []
+      },
+      "sources": [
+        "https://lojwiki.com/heroes/"
+      ]
+    },
+    {
+      "id": "Phoenix",
+      "name": "Phoenix",
+      "verification": "unverified",
+      "class": null,
+      "seasonAvailability": null,
+      "skillMetadata": {
+        "status": "unknown",
+        "skills": []
+      },
+      "sources": [
+        "https://lojwiki.com/heroes/"
+      ]
+    },
+    {
+      "id": "Drake",
+      "name": "Drake",
+      "verification": "unverified",
+      "class": null,
+      "seasonAvailability": null,
+      "skillMetadata": {
+        "status": "unknown",
+        "skills": []
+      },
+      "sources": [
+        "https://lojwiki.com/heroes/"
+      ]
+    },
+    {
+      "id": "Flameborne",
+      "name": "Flameborne",
+      "verification": "unverified",
+      "class": {
+        "value": "Bomber",
+        "source": "https://lojxlab.com/gorilla-legion/"
+      },
+      "seasonAvailability": null,
+      "skillMetadata": {
+        "status": "unknown",
+        "skills": []
+      },
+      "sources": [
+        "https://lojxlab.com/gorilla-legion/"
+      ]
+    },
+    {
+      "id": "Xuanming",
+      "name": "Xuanming",
+      "verification": "unverified",
+      "class": null,
+      "seasonAvailability": null,
+      "skillMetadata": {
+        "status": "unknown",
+        "skills": []
+      },
+      "sources": [
+        "https://lojwiki.com/heroes/"
+      ]
+    },
+    {
+      "id": "Vivian",
+      "name": "Vivian",
+      "verification": "unverified",
+      "class": null,
+      "seasonAvailability": null,
+      "skillMetadata": {
+        "status": "unknown",
+        "skills": []
+      },
+      "sources": [
+        "https://lojwiki.com/heroes/"
+      ]
+    },
+    {
+      "id": "Tormund",
+      "name": "Tormund",
+      "verification": "unverified",
+      "class": null,
+      "seasonAvailability": null,
+      "skillMetadata": {
+        "status": "unknown",
+        "skills": []
+      },
+      "sources": [
+        "https://lojwiki.com/heroes/"
+      ]
+    },
+    {
+      "id": "Inata",
+      "name": "Inata",
+      "verification": "unverified",
+      "class": null,
+      "seasonAvailability": null,
+      "skillMetadata": {
+        "status": "unknown",
+        "skills": []
+      },
+      "sources": [
+        "https://lojwiki.com/heroes/"
+      ]
+    },
+    {
+      "id": "Devilian",
+      "name": "Devilian",
+      "verification": "unverified",
+      "class": null,
+      "seasonAvailability": null,
+      "skillMetadata": {
+        "status": "unknown",
+        "skills": []
+      },
+      "sources": [
+        "https://lojwiki.com/heroes/"
+      ]
+    },
+    {
+      "id": "Mia",
+      "name": "Mia",
+      "verification": "unverified",
+      "class": null,
+      "seasonAvailability": null,
+      "skillMetadata": {
+        "status": "unknown",
+        "skills": []
+      },
+      "sources": [
+        "https://lojwiki.com/heroes/"
+      ]
+    },
+    {
+      "id": "Caesar",
+      "name": "Caesar",
+      "verification": "unverified",
+      "class": null,
+      "seasonAvailability": null,
+      "skillMetadata": {
+        "status": "unknown",
+        "skills": []
+      },
+      "sources": [
+        "https://lojwiki.com/heroes/"
+      ]
+    },
+    {
+      "id": "Lanchester",
+      "name": "Lanchester",
+      "verification": "unverified",
+      "class": null,
+      "seasonAvailability": null,
+      "skillMetadata": {
+        "status": "unknown",
+        "skills": []
+      },
+      "sources": [
+        "https://lojwiki.com/heroes/"
+      ]
+    },
+    {
+      "id": "Alph",
+      "name": "Alph",
+      "verification": "unverified",
+      "class": null,
+      "seasonAvailability": null,
+      "skillMetadata": {
+        "status": "unknown",
+        "skills": []
+      },
+      "sources": [
+        "https://lojwiki.com/heroes/"
+      ]
+    },
+    {
+      "id": "Whisper",
+      "name": "Whisper",
+      "verification": "unverified",
+      "class": null,
+      "seasonAvailability": null,
+      "skillMetadata": {
+        "status": "unknown",
+        "skills": []
+      },
+      "sources": [
+        "https://lojwiki.com/heroes/"
+      ]
+    },
+    {
+      "id": "Sawyer",
+      "name": "Sawyer",
+      "verification": "unverified",
+      "class": null,
+      "seasonAvailability": null,
+      "skillMetadata": {
+        "status": "unknown",
+        "skills": []
+      },
+      "sources": [
+        "https://lojwiki.com/heroes/"
+      ]
+    },
+    {
+      "id": "Veronica",
+      "name": "Veronica",
+      "verification": "unverified",
+      "class": null,
+      "seasonAvailability": null,
+      "skillMetadata": {
+        "status": "unknown",
+        "skills": []
+      },
+      "sources": [
+        "https://lojwiki.com/heroes/"
+      ]
+    },
+    {
+      "id": "Zoltan",
+      "name": "Zoltan",
+      "verification": "unverified",
+      "class": null,
+      "seasonAvailability": null,
+      "skillMetadata": {
+        "status": "unknown",
+        "skills": []
+      },
+      "sources": [
+        "https://lojwiki.com/heroes/"
+      ]
+    },
+    {
+      "id": "Marcus",
+      "name": "Marcus",
+      "verification": "unverified",
+      "class": null,
+      "seasonAvailability": null,
+      "skillMetadata": {
+        "status": "unknown",
+        "skills": []
+      },
+      "sources": [
+        "https://lojwiki.com/heroes/"
+      ]
+    },
+    {
+      "id": "Lee",
+      "name": "Lee",
+      "verification": "unverified",
+      "class": null,
+      "seasonAvailability": null,
+      "skillMetadata": {
+        "status": "unknown",
+        "skills": []
+      },
+      "sources": [
+        "https://lojwiki.com/heroes/"
+      ]
+    },
+    {
+      "id": "Edwin",
+      "name": "Edwin",
+      "verification": "unverified",
+      "class": null,
+      "seasonAvailability": null,
+      "skillMetadata": {
+        "status": "unknown",
+        "skills": []
+      },
+      "sources": [
+        "https://lojwiki.com/heroes/"
+      ]
+    },
+    {
+      "id": "Otto",
+      "name": "Otto",
+      "verification": "unverified",
+      "class": null,
+      "seasonAvailability": null,
+      "skillMetadata": {
+        "status": "unknown",
+        "skills": []
+      },
+      "sources": [
+        "https://lojwiki.com/heroes/"
+      ]
+    },
+    {
+      "id": "Wukong",
+      "name": "Wukong",
+      "verification": "unverified",
+      "class": null,
+      "seasonAvailability": null,
+      "skillMetadata": {
+        "status": "unknown",
+        "skills": []
+      },
+      "sources": [
+        "https://lojwiki.com/heroes/"
+      ]
+    },
+    {
+      "id": "Worrell",
+      "name": "Worrell",
+      "verification": "unverified",
+      "class": null,
+      "seasonAvailability": null,
+      "skillMetadata": {
+        "status": "unknown",
+        "skills": []
+      },
+      "sources": [
+        "https://lojwiki.com/heroes/"
+      ]
+    },
+    {
+      "id": "Kate",
+      "name": "Kate",
+      "verification": "unverified",
+      "class": null,
+      "seasonAvailability": null,
+      "skillMetadata": {
+        "status": "unknown",
+        "skills": []
+      },
+      "sources": [
+        "https://lojwiki.com/heroes/"
+      ]
+    },
+    {
+      "id": "Fran & Pike",
+      "name": "Fran & Pike",
+      "verification": "unverified",
+      "class": null,
+      "seasonAvailability": null,
+      "skillMetadata": {
+        "status": "unknown",
+        "skills": []
+      },
+      "sources": [
+        "https://lojwiki.com/heroes/"
+      ]
+    },
+    {
+      "id": "Boogie",
+      "name": "Boogie",
+      "verification": "unverified",
+      "class": null,
+      "seasonAvailability": null,
+      "skillMetadata": {
+        "status": "unknown",
+        "skills": []
+      },
+      "sources": [
+        "https://lojwiki.com/heroes/"
+      ]
+    },
+    {
+      "id": "Rin",
+      "name": "Rin",
+      "verification": "unverified",
+      "class": null,
+      "seasonAvailability": null,
+      "skillMetadata": {
+        "status": "unknown",
+        "skills": []
+      },
+      "sources": [
+        "https://lojwiki.com/heroes/"
+      ]
+    },
+    {
+      "id": "Rex",
+      "name": "Rex",
+      "verification": "unverified",
+      "class": null,
+      "seasonAvailability": null,
+      "skillMetadata": {
+        "status": "unknown",
+        "skills": []
+      },
+      "sources": [
+        "https://lojwiki.com/heroes/"
+      ]
+    },
+    {
+      "id": "Gerd",
+      "name": "Gerd",
+      "verification": "unverified",
+      "class": null,
+      "seasonAvailability": null,
+      "skillMetadata": {
+        "status": "unknown",
+        "skills": []
+      },
+      "sources": [
+        "https://lojwiki.com/heroes/"
+      ]
+    },
+    {
+      "id": "Iwakado",
+      "name": "Iwakado",
+      "verification": "unverified",
+      "class": null,
+      "seasonAvailability": null,
+      "skillMetadata": {
+        "status": "unknown",
+        "skills": []
+      },
+      "sources": [
+        "https://lojwiki.com/heroes/"
+      ]
+    },
+    {
+      "id": "Vesaryon",
+      "name": "Vesaryon",
+      "verification": "unverified",
+      "class": null,
+      "seasonAvailability": null,
+      "skillMetadata": {
+        "status": "unknown",
+        "skills": []
+      },
+      "sources": [
+        "https://lojwiki.com/heroes/"
+      ]
+    },
+    {
+      "id": "Ekko",
+      "name": "Ekko",
+      "verification": "unverified",
+      "class": null,
+      "seasonAvailability": null,
+      "skillMetadata": {
+        "status": "unknown",
+        "skills": []
+      },
+      "sources": [
+        "https://lojwiki.com/heroes/"
+      ]
+    },
+    {
+      "id": "Gimes",
+      "name": "Gimes",
+      "verification": "unverified",
+      "class": null,
+      "seasonAvailability": null,
+      "skillMetadata": {
+        "status": "unknown",
+        "skills": []
+      },
+      "sources": [
+        "https://lojwiki.com/heroes/"
+      ]
+    },
+    {
+      "id": "Lunarl",
+      "name": "Lunarl",
+      "verification": "unverified",
+      "class": {
+        "value": "Bomber",
+        "source": "https://lojxlab.com/gorilla-legion/"
+      },
+      "seasonAvailability": null,
+      "skillMetadata": {
+        "status": "unknown",
+        "skills": []
+      },
+      "sources": [
+        "https://lojwiki.com/heroes/",
+        "https://lojxlab.com/gorilla-legion/"
+      ]
+    },
+    {
+      "id": "Minyeon & Taehun",
+      "name": "Minyeon & Taehun",
+      "verification": "unverified",
+      "class": null,
+      "seasonAvailability": null,
+      "skillMetadata": {
+        "status": "unknown",
+        "skills": []
+      },
+      "sources": [
+        "https://lojwiki.com/heroes/"
+      ]
+    },
+    {
+      "id": "Samir",
+      "name": "Samir",
+      "verification": "unverified",
+      "class": null,
+      "seasonAvailability": null,
+      "skillMetadata": {
+        "status": "unknown",
+        "skills": []
+      },
+      "sources": [
+        "https://lojwiki.com/heroes/"
+      ]
+    },
+    {
+      "id": "Platos",
+      "name": "Platos",
+      "verification": "unverified",
+      "class": null,
+      "seasonAvailability": null,
+      "skillMetadata": {
+        "status": "unknown",
+        "skills": []
+      },
+      "sources": [
+        "https://lojwiki.com/heroes/"
+      ]
+    },
+    {
+      "id": "Flora",
+      "name": "Flora",
+      "verification": "unverified",
+      "class": null,
+      "seasonAvailability": null,
+      "skillMetadata": {
+        "status": "unknown",
+        "skills": []
+      },
+      "sources": [
+        "https://lojwiki.com/heroes/"
+      ]
+    },
+    {
+      "id": "Lofili",
+      "name": "Lofili",
+      "verification": "unverified",
+      "class": null,
+      "seasonAvailability": null,
+      "skillMetadata": {
+        "status": "unknown",
+        "skills": []
+      },
+      "sources": [
+        "https://lojwiki.com/heroes/"
+      ]
+    },
+    {
+      "id": "Harton",
+      "name": "Harton",
+      "verification": "unverified",
+      "class": null,
+      "seasonAvailability": null,
+      "skillMetadata": {
+        "status": "unknown",
+        "skills": []
+      },
+      "sources": [
+        "https://lojwiki.com/heroes/"
+      ]
+    },
+    {
+      "id": "Durga",
+      "name": "Durga",
+      "verification": "unverified",
+      "class": null,
+      "seasonAvailability": null,
+      "skillMetadata": {
+        "status": "unknown",
+        "skills": []
+      },
+      "sources": [
+        "https://lojwiki.com/heroes/"
+      ]
+    },
+    {
+      "id": "Pasino",
+      "name": "Pasino",
+      "verification": "unverified",
+      "class": null,
+      "seasonAvailability": null,
+      "skillMetadata": {
+        "status": "unknown",
+        "skills": []
+      },
+      "sources": [
+        "https://lojwiki.com/heroes/"
+      ]
+    },
+    {
+      "id": "Aiksen",
+      "name": "Aiksen",
+      "verification": "unverified",
+      "class": null,
+      "seasonAvailability": null,
+      "skillMetadata": {
+        "status": "unknown",
+        "skills": []
+      },
+      "sources": [
+        "https://lojwiki.com/heroes/"
+      ]
+    },
+    {
+      "id": "Omega Rugal",
+      "name": "Omega Rugal",
+      "verification": "unverified",
+      "class": null,
+      "seasonAvailability": null,
+      "skillMetadata": {
+        "status": "unknown",
+        "skills": []
+      },
+      "sources": [
+        "https://lojwiki.com/heroes/"
+      ]
+    },
+    {
+      "id": "Terry Bogard",
+      "name": "Terry Bogard",
+      "verification": "unverified",
+      "class": null,
+      "seasonAvailability": null,
+      "skillMetadata": {
+        "status": "unknown",
+        "skills": []
+      },
+      "sources": [
+        "https://lojwiki.com/heroes/"
+      ]
+    },
+    {
+      "id": "Mai Shiranui",
+      "name": "Mai Shiranui",
+      "verification": "unverified",
+      "class": null,
+      "seasonAvailability": null,
+      "skillMetadata": {
+        "status": "unknown",
+        "skills": []
+      },
+      "sources": [
+        "https://lojwiki.com/heroes/"
+      ]
+    },
+    {
+      "id": "Iwado",
+      "name": "Iwado",
+      "verification": "unverified",
+      "class": {
+        "value": "Shieldbearer",
+        "source": "/catalog-evidence/iwado.md"
+      },
+      "rarity": {
+        "value": "SR",
+        "source": "/catalog-evidence/iwado.md"
+      },
+      "aliases": [
+        {
+          "name": "Sumo Tyrant, Iwado",
+          "verification": "verified",
+          "source": "/catalog-evidence/iwado.md"
+        }
+      ],
+      "seasonAvailability": null,
+      "skillMetadata": {
+        "status": "unknown",
+        "skills": []
+      },
+      "sources": [
+        "/catalog-evidence/iwado.md"
+      ]
+    }
+  ]
+}
