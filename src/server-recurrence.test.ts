@@ -29,7 +29,7 @@ it("migrates legacy one-offs without writing or changing clock/order/preferences
  const storage=systemStorage(),cycle={...exampleCycle(),enabled:false},calibration=synchronizeServerClock("2026-10-26T00:00:00",100000);
  const raw=JSON.stringify({version:1,entries:[{profileId:"p",server:248,cycles:[cycle],calibration}]});storage.setItem(SCHEDULE_KEY,raw);
  const s=loadScheduleSettings(storage,"p",248);expect(s.cycles).toEqual([cycle]);expect(s.calibration).toEqual(calibration);expect(s.recurrence.enabled).toBe(false);expect(storage.getItem(SCHEDULE_KEY)).toBe(raw);
- updateScheduleSettings(storage,"p",248,s=>s);expect(JSON.parse(storage.getItem(SCHEDULE_KEY)!).version).toBe(2);
+ updateScheduleSettings(storage,"p",248,s=>s);expect(JSON.parse(storage.getItem(SCHEDULE_KEY)!).version).toBe(3);
 });
 it("migrates enabled legacy cycles as overrides and never auto-confirms an unconfirmed cycle",()=>{
  const storage=systemStorage(),cycle={...exampleCycle(),id:"future",startDate:"2026-11-09",confirmed:false};storage.setItem(SCHEDULE_KEY,JSON.stringify({version:1,entries:[{profileId:"p",server:248,cycles:[cycle],calibration:null}]}));

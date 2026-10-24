@@ -322,3 +322,25 @@ it("saves and applies a ratio experiment to candidate 4 without selecting new he
   expect(record.observedAt).toBe("2026-10-24T12:30:00-04:00");expect(record.testConditions?.group).toBe("R1");expect(record.robotIds).toEqual([null,null,null]);
   expect(storage.getItem(STORAGE_KEY)).toBe(before);
 });
+it("prioritizes generation and formation results before ratio tools and a collapsed schedule",async()=>{
+ render(<App storage={memory([completeProfile()])} />);await ready();
+ const events=screen.getByRole("region",{name:"Choose your event"}),results=screen.getByRole("region",{name:"Formation results"}),testing=screen.getByRole("region",{name:"Troop Ratio Testing"});
+ const schedule=screen.getByText("Server schedule & 14-day rotation").parentElement as HTMLDetailsElement;
+ expect(schedule.open).toBe(false);expect(events.compareDocumentPosition(results)&Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();expect(results.compareDocumentPosition(testing)&Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();expect(testing.compareDocumentPosition(schedule)&Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+ expect(screen.getByText("Server Time (ST)").closest(".schedule-disclosure")).toBe(schedule);
+ const shortcuts=screen.getByRole("navigation",{name:"Generator shortcuts"});expect(within(shortcuts).getByRole("link",{name:/Formation results/}).getAttribute("href")).toBe("#formation-results");expect(within(shortcuts).getByRole("link",{name:"Troop ratios"}).getAttribute("href")).toBe("#ratios-title");
+});
+it("expands and collapses the full clock without changing formations, ratios, profiles or history",async()=>{
+ const storage=memory([completeProfile()]),before=storage.getItem(STORAGE_KEY),user=userEvent.setup();storage.setItem("gorillalab.battles.v1","unchanged history");render(<App storage={storage} />);await ready();await user.click(screen.getByRole("button",{name:/Generate Formations/}));
+ const result=await screen.findByRole("article",{name:"Formation 1"}),html=result.innerHTML;
+ const summary=screen.getByText("Server schedule & 14-day rotation"),schedule=summary.parentElement as HTMLDetailsElement;await user.click(summary);expect(schedule.open).toBe(true);expect(within(schedule).getByRole("timer")).toBeTruthy();expect(within(schedule).getByText("Advanced clock settings")).toBeTruthy();await user.click(summary);expect(schedule.open).toBe(false);
+ expect(result.innerHTML).toBe(html);expect(within(result).getAllByRole("region",{name:/Formation 1 team/})).toHaveLength(3);expect((screen.getByLabelText("Shared Bomber percentage") as HTMLInputElement).value).toBe("20");expect(storage.getItem(STORAGE_KEY)).toBe(before);expect(storage.getItem("gorillalab.battles.v1")).toBe("unchanged history");
+});
+it("brings all three generated teams into view and keeps owned heroes one shortcut away",async()=>{
+ const user=userEvent.setup(),scroll=vi.fn(),original=HTMLElement.prototype.scrollIntoView;HTMLElement.prototype.scrollIntoView=scroll;
+ try{render(<App storage={memory([completeProfile()])} />);await ready();await user.click(screen.getByRole("button",{name:/Generate Formations/}));const first=await screen.findByRole("article",{name:"Formation 1"});expect(scroll).toHaveBeenCalled();expect(within(first).getAllByRole("heading",{name:/Team [123] —/}).map(n=>n.textContent)).toEqual(["Team 1 — TOP IN GAME","Team 2 — MIDDLE IN GAME","Team 3 — BOTTOM IN GAME"]);await user.click(within(screen.getByRole("navigation",{name:"Generator shortcuts"})).getByRole("button",{name:"Owned heroes"}));expect(screen.getByRole("heading",{name:/Your heroes/})).toBeTruthy();}finally{if(original)HTMLElement.prototype.scrollIntoView=original;else delete (HTMLElement.prototype as any).scrollIntoView;}
+});
+it("opens the existing damage-recording interface from the optional tip without saving data",async()=>{
+ const {loadBattles}=await import("./battles"),storage=memory([completeProfile()]),before=storage.getItem(STORAGE_KEY),user=userEvent.setup();render(<App storage={storage} />);await ready();await user.click(screen.getByRole("button",{name:/Generate Formations/}));await screen.findByRole("article",{name:"Formation 1"});await user.click(screen.getByRole("button",{name:"Record Damage"}));
+ expect(screen.getByRole("heading",{name:"Battle history & testing"})).toBeTruthy();expect(screen.getAllByRole("spinbutton",{name:"Reported damage"})).toHaveLength(1);expect((screen.getByLabelText("Generated formation snapshot") as HTMLSelectElement).value).toBe("0");expect((screen.getByRole("checkbox",{name:/Attach generated individual formation/}) as HTMLInputElement).checked).toBe(true);expect((screen.getByLabelText("Reported damage") as HTMLInputElement).value).toBe("");expect(storage.getItem(STORAGE_KEY)).toBe(before);expect(loadBattles(storage)).toEqual([]);
+});

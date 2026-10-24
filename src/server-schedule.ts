@@ -6,15 +6,19 @@ export const SCHEDULE_KEY = "gorillalab.server-schedules.v1";
 export const DAY_MS = 86_400_000;
 export const CLOCK_MAX_AGE_MS = DAY_MS; // Application freshness policy, not a game rule.
 export const CLOCK_JUMP_TOLERANCE_MS = 2000;
+// Evidence-backed fixed default; no browser-local timezone or DST conversion.
+export const SERVER_UTC_OFFSET_MINUTES = -120;
+export type ClockMode = "automatic"|"manual"|"reference";
 export type Cycle = { id:string; startDate:string; order:string[]; confirmed:boolean; enabled:boolean; source:"player-confirmed-example"|"player-configured"|"player-confirmed-recurrence"; replacesStartDate?:string; exceptions?:{eventId:string;date:string;time:string;skip:boolean}[] };
 export type Calibration = { serverDateTime:string; clientAtSync:number; lastSeenClient:number; invalidated:boolean };
 export type Recurrence = {enabled:boolean;anchorDate:string;intervalDays:number;order:string[]};
 export const defaultRecurrence=():Recurrence=>({enabled:true,anchorDate:"2026-10-26",intervalDays:14,order:[...USUAL_EVENT_ORDER]});
-export type ScheduleSettings = { recurrence:Recurrence; profileId:string; server:number; cycles:Cycle[]; calibration:Calibration|null; migrationNotice?:string };
+export type ScheduleSettings = { recurrence:Recurrence; profileId:string; server:number; cycles:Cycle[]; calibration:Calibration|null; clockMode:ClockMode; referenceCalibration:Calibration|null; migrationNotice?:string };
 const object=(v:unknown):v is Record<string,any>=>!!v&&typeof v==="object"&&!Array.isArray(v);
 const epoch=(v:unknown):v is number=>typeof v==="number"&&Number.isSafeInteger(v)&&v>=0&&v<=8_640_000_000_000_000;
 /** UTC getters are used only as timezone-independent CIVIL calendar arithmetic.
- * The resulting wall-axis value is NOT a verified game UTC instant or offset. */
+ * A wall-axis value represents ST civil fields. Only explicit fixed-offset
+ * conversion helpers below convert it to/from an absolute UTC timestamp. */
 function parseCivilCalendar(value:string,minYear:number,maxYear:number):number {
   if(!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}$/.test(value))throw new Error("Enter the full ST year/date and 24-hour time, including seconds.");
   const [y,m,d,h,min,s]=value.match(/\d+/g)!.map(Number);
@@ -32,7 +36,7 @@ export function formatServerClock(value:number){return new Date(value).toISOStri
 export function addServerDays(date:string,days:number){if(!Number.isSafeInteger(days))throw new Error("Calendar days must be whole numbers.");const civil=new Date(calendarAxis(date+"T00:00:00"));civil.setUTCDate(civil.getUTCDate()+days);return serverDate(civil.getTime());}
 export function serverWeekday(date:string){return ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"][new Date(calendarAxis(date+"T00:00:00")).getUTCDay()];}
 export function exampleCycle():Cycle{return {id:"example-2026-10-26",startDate:"2026-10-26",order:[...USUAL_EVENT_ORDER],confirmed:true,enabled:true,source:"player-confirmed-example"};}
-export function defaultSettings(profileId:string,server:number):ScheduleSettings{return {profileId,server,cycles:[],calibration:null,recurrence:defaultRecurrence()};}
+export function defaultSettings(profileId:string,server:number):ScheduleSettings{return {profileId,server,cycles:[],calibration:null,recurrence:defaultRecurrence(),clockMode:"automatic",referenceCalibration:null};}
 export function validCycle(c:unknown):c is Cycle {
   if(!object(c)||typeof c.id!=="string"||!c.id||c.id.length>100||typeof c.startDate!=="string"||typeof c.enabled!=="boolean"||typeof c.confirmed!=="boolean"||!["player-confirmed-example","player-configured","player-confirmed-recurrence"].includes(c.source)||!Array.isArray(c.order)||c.order.length!==7||new Set(c.order).size!==7||!c.order.every((id:unknown)=>USUAL_EVENT_ORDER.includes(id as typeof USUAL_EVENT_ORDER[number])))return false;
   try{parseServerCivil(c.startDate+"T00:00:00");parseServerCivil(addServerDays(c.startDate,6)+"T00:00:00");
@@ -47,6 +51,7 @@ export function validCalibration(c:unknown):c is Calibration {
 export function validateSettings(s:unknown):s is ScheduleSettings {
   try {
   if(!object(s)||typeof s.profileId!=="string"||!s.profileId||!epoch(s.server)||!Array.isArray(s.cycles)||s.cycles.length>24||!s.cycles.every(validCycle)||new Set(s.cycles.map((c:Cycle)=>c.id)).size!==s.cycles.length||(s.calibration!==null&&!validCalibration(s.calibration)))return false;
+  if(!["automatic","manual","reference"].includes(s.clockMode)||(s.referenceCalibration!==null&&!validCalibration(s.referenceCalibration)))return false;
   if(s.migrationNotice!==undefined&&(typeof s.migrationNotice!=="string"||s.migrationNotice.length>300))return false;
   try{const r=s.recurrence;if(!object(r)||typeof r.enabled!=="boolean"||!Number.isInteger(r.intervalDays)||r.intervalDays<7||r.intervalDays>366||!validCycle({...exampleCycle(),startDate:r.anchorDate,order:r.order}))return false;}catch{return false;}
 if(new Set(s.cycles.map((c:Cycle)=>c.replacesStartDate??c.startDate)).size!==s.cycles.length)return false;
@@ -55,13 +60,13 @@ const dates=new Set<string>();
   return true;
   }catch{return false;}
 }
-export function loadScheduleDocument(storage:Storage):{version:2;entries:ScheduleSettings[]} {
-  const raw=storage.getItem(SCHEDULE_KEY);if(raw===null)return {version:2,entries:[]};
+export function loadScheduleDocument(storage:Storage):{version:3;entries:ScheduleSettings[]} {
+  const raw=storage.getItem(SCHEDULE_KEY);if(raw===null)return {version:3,entries:[]};
   const d=JSON.parse(raw);
   if(object(d)&&d.version===1&&Array.isArray(d.entries)){
     d.entries=d.entries.map((entry:unknown)=>{
       if(!object(entry))return entry;
-      const explicit={...entry,recurrence:{...defaultRecurrence(),enabled:false}};
+      const explicit={...entry,recurrence:{...defaultRecurrence(),enabled:false},clockMode:"automatic",referenceCalibration:null};
       // Validate the legacy explicit schedule first; never repair malformed data.
       if(!validateSettings(explicit))return entry;
       const recurring={...explicit,recurrence:{...defaultRecurrence(),enabled:explicit.cycles.some(c=>c.enabled)}};
@@ -71,8 +76,12 @@ export function loadScheduleDocument(storage:Storage):{version:2;entries:Schedul
       return {...explicit,migrationNotice:"Legacy manual dates overlap the automatic rotation. Their dates are preserved; automatic recurrence remains disabled until you review and save recurrence settings."};
     });d.version=2;
   }
-if(!object(d)||d.version!==2||!Array.isArray(d.entries)||d.entries.length>500||!d.entries.every(validateSettings)||new Set(d.entries.map((e:ScheduleSettings)=>JSON.stringify([e.profileId,e.server]))).size!==d.entries.length)throw new Error("Invalid saved server schedules; existing data has not been overwritten.");
-  return structuredClone(d) as {version:2;entries:ScheduleSettings[]};
+  if(object(d)&&d.version===2&&Array.isArray(d.entries)){
+    // Old calibrations are retained verbatim, but no longer gate the first visit.
+    d.entries=d.entries.map((entry:unknown)=>object(entry)?{...entry,clockMode:"automatic",referenceCalibration:null}:entry);d.version=3;
+  }
+if(!object(d)||d.version!==3||!Array.isArray(d.entries)||d.entries.length>500||!d.entries.every(validateSettings)||new Set(d.entries.map((e:ScheduleSettings)=>JSON.stringify([e.profileId,e.server]))).size!==d.entries.length)throw new Error("Invalid saved server schedules; existing data has not been overwritten.");
+  return structuredClone(d) as {version:3;entries:ScheduleSettings[]};
 }
 export function loadScheduleSettings(storage:Storage,profileId:string,server:number):ScheduleSettings {
   return loadScheduleDocument(storage).entries.find(e=>e.profileId===profileId&&e.server===server)??defaultSettings(profileId,server);
@@ -96,7 +105,30 @@ export function estimateServerClock(calibration:Calibration|null,clientNow:numbe
   const jump=runtime?Math.abs((clientNow-runtime.wallStart)-(runtime.monoNow-runtime.monoStart)):0;
   if(calibration.invalidated||elapsed < -CLOCK_JUMP_TOLERANCE_MS||clientNow<calibration.lastSeenClient-CLOCK_JUMP_TOLERANCE_MS||jump>CLOCK_JUMP_TOLERANCE_MS)return {status:"clock-changed" as const,serverWall:null,reason:"Device clock change or suspended timer detected. Resync before using a countdown."};
   if(elapsed>CLOCK_MAX_AGE_MS)return {status:"stale" as const,serverWall:null,reason:"Calibration is older than 24 hours. Resync to restore the estimated countdown."};
-  return {status:"fresh" as const,serverWall:parseServerCivil(calibration.serverDateTime)+Math.max(0,elapsed),reason:"Estimated ST from manual synchronization; game timezone remains unverified."};
+  return {status:"fresh" as const,serverWall:parseServerCivil(calibration.serverDateTime)+Math.max(0,elapsed),reason:"Estimated ST from optional calibration; manual entry and device-clock drift can affect accuracy."};
+}
+/** Convert exactly once: UTC timestamp + (-120 minutes) = ST civil axis. */
+export function absoluteToServerWall(timestamp:number){
+  if(!epoch(timestamp))throw new Error("Invalid absolute timestamp.");
+  const wall=timestamp+SERVER_UTC_OFFSET_MINUTES*60_000;
+  calendarAxis(new Date(wall).toISOString().slice(0,19));return wall;
+}
+export function serverCivilToUtc(value:string){return parseServerCivil(value)-SERVER_UTC_OFFSET_MINUTES*60_000;}
+/** Optional reading from a separate UTC reference, entered by the user, not network-verified. */
+export function calibrateFromUtc(utcDateTime:string,clientAtSubmission:number){
+  const wall=absoluteToServerWall(parseServerCivil(utcDateTime));
+  return synchronizeServerClock(new Date(wall).toISOString().slice(0,19),clientAtSubmission);
+}
+export function estimateScheduleClock(settings:ScheduleSettings,clientNow:number,runtime?:{wallStart:number;monoStart:number;monoNow:number}){
+  if(settings.clockMode!=="automatic"){
+    const calibration=settings.clockMode==="manual"?settings.calibration:settings.referenceCalibration;
+    if(!calibration)return {status:"missing" as const,serverWall:null,reason:settings.clockMode==="reference"?"Enter a current reference UTC reading in advanced settings, or restore automatic time.":"Set an optional manual ST override in advanced settings, or restore automatic time."};
+    return estimateServerClock(calibration,clientNow,runtime);
+  }
+  try{
+    if(runtime&&(![runtime.wallStart,runtime.monoStart,runtime.monoNow].every(Number.isFinite)||Math.abs((clientNow-runtime.wallStart)-(runtime.monoNow-runtime.monoStart))>CLOCK_JUMP_TOLERANCE_MS))throw new Error("Device clock change or suspended timer detected. Refresh automatic clock or use optional reference calibration in advanced settings.");
+    return {status:"fresh" as const,serverWall:absoluteToServerWall(clientNow),reason:"Automatic UTC−02:00 from your device timestamp; device clock accuracy is not independently verified."};
+  }catch(e){return {status:"clock-changed" as const,serverWall:null,reason:e instanceof Error?e.message:"Invalid device clock; check advanced clock settings."};}
 }
 export type Occurrence={appearanceTime:string;manualOverride:boolean;cycleId:string;date:string;eventId:string;name:string;appearance:number;confirmed:boolean;example:boolean;enabled:boolean};
 export function cycleOccurrences(cycle:Cycle):Occurrence[]{return cycle.order.map((id,i)=>{
