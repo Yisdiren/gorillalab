@@ -52,6 +52,7 @@ export function migrateProfiles(raw: string | null): ProfileData {
   const profiles = data.version === 1 ? data.profiles.map((p: any) => {
     if (!record(p) || !Array.isArray(p.ownedHeroIds) || !p.ownedHeroIds.every((id: unknown) => typeof id === "string")) throw new Error("Invalid legacy profile.");
     return { ...createProfile(p.id, p.name), serverNumber: p.serverNumber ?? null, currentSeason: p.currentSeason ?? null,
+      ownedRobots: p.ownedRobots === undefined ? [] : p.ownedRobots, ...(p.teamRobotIds === undefined ? {} : { teamRobotIds: p.teamRobotIds }),
       ownedHeroes: [...new Set<string>(p.ownedHeroIds)].map(heroId => ({ heroId, stars: null, skillLevels: {}, equipment: [] })) };
   }) : data.profiles;
   if (!profiles.every(validateProfile) || new Set(profiles.map((p: PlayerProfile) => p.id)).size !== profiles.length) throw new Error("Invalid saved profile data; saved data has not been changed.");
