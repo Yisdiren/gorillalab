@@ -1,0 +1,80 @@
+{
+  "sourceProject": "Lands of Jail Trial Cage Generator",
+  "sourceMapping": "data/robot-presentation.ts",
+  "artworkAttribution": "Lands of Jail game artwork; original rights remain with their respective owners. Copied unchanged for identification; no new license asserted.",
+  "robots": [
+    {
+      "id": "Light Cone",
+      "portrait": "/robots/light-cone.jpg",
+      "sourcePath": "public/icons/robots/light-cone.jpg",
+      "sha256": "a0577fb776919277852698bae7b15d6276b7740ac9a5cf0569761931f41f0a11"
+    },
+    {
+      "id": "Hercules α",
+      "portrait": "/robots/hercules-alpha.jpg",
+      "sourcePath": "public/icons/robots/hercules-alpha.jpg",
+      "sha256": "29327da25e52c924cd97087b08557255b7f876c1e84067c453d8f365122b070d"
+    },
+    {
+      "id": "Ranger",
+      "portrait": "/robots/ranger.jpg",
+      "sourcePath": "public/icons/robots/ranger.jpg",
+      "sha256": "646d379c41f08dcaca6e7ac1fa52ffaeaa788dacc205da7717362878a4bae7d6"
+    },
+    {
+      "id": "Pluto",
+      "portrait": "/robots/pluto.jpg",
+      "sourcePath": "public/icons/robots/pluto.jpg",
+      "sha256": "20f6da9ffd082f49e0d8ca9ea034a4ca3e7715d1717fcb072f05e7f0e69e7f61"
+    },
+    {
+      "id": "Atlax",
+      "portrait": "/robots/atlax.jpg",
+      "sourcePath": "public/icons/robots/atlax.jpg",
+      "sha256": "3d782ec77c8858f2346ad66d540ec5fc7ec6af0c30ad97fdc073869832096ae7"
+    },
+    {
+      "id": "Infercore",
+      "portrait": "/robots/infercore.jpg",
+      "sourcePath": "public/icons/robots/infercore.jpg",
+      "sha256": "dd470a196dfd60e11f5de042d23c3d1601c48ec647876ebb29dd729b3100495d"
+    },
+    {
+      "id": "Phantom Cat",
+      "portrait": "/robots/phantom-cat.jpg",
+      "sourcePath": "public/icons/robots/phantom-cat.jpg",
+      "sha256": "ffb8bef0a4ded7ba2c31eef7f4873b2b335591e45e2bf629da8a82c3cfcc2312"
+    },
+    {
+      "id": "Halo",
+      "portrait": "/robots/halo.jpg",
+      "sourcePath": "public/icons/robots/halo.jpg",
+      "sha256": "23f57fb448681f2a4c276ec158abcbb153282db5fbd347a60255029cb2436f9c"
+    },
+    {
+      "id": "Yokozuna",
+      "portrait": "/robots/yokozuna.jpg",
+      "sourcePath": "public/icons/robots/yokozuna.jpg",
+      "sha256": "d85c644dd22ce2a0324a5428f0177d2302b1545edc400aa0ccc7a1123d1e8c8f"
+    },
+    {
+      "id": "Musashimaru",
+      "portrait": "/robots/musashimaru.jpg",
+      "sourcePath": "public/icons/robots/musashimaru.jpg",
+      "sha256": "9a29b862f13a843dfbfcd0043a18023d632930ad5dbc0b996b5d3eec4d06e9cd"
+    },
+    {
+      "id": "Bastion",
+      "portrait": "/robots/bastion.png",
+      "sourcePath": "bastion-new.png",
+      "sourceProject": "User-supplied replacement portrait (GorillaLab, 2026-10-26)",
+      "sha256": "71888ed09fe35ef83aa4d2348eb795b56a5c38588e959a43f9fd617cd8108fbc"
+    },
+    {
+      "id": "Dauntless",
+      "portrait": null,
+      "sourcePath": null,
+      "reason": "No portrait mapped in source"
+    }
+  ]
+}

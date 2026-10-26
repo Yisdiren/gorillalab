@@ -26,6 +26,9 @@ browser-storage/
 exports/
 .preview-validation/
 
+# Temporary user-supplied portrait; permanent copy lives under public/robots.
+/bastion-new.png
+
 # Local player-roster audits and browser screenshots are not source fixtures.
 .stiletto-*
 docs/browser-audit/

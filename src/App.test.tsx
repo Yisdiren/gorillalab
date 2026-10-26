@@ -89,7 +89,7 @@ it("renders one recommendation and expandable real engine alternatives with all 
   const storage = memory([completeProfile()]); const user = userEvent.setup(); render(<App storage={storage} />); await ready();
   await fill("Shared Shieldbearer percentage", 1); await fill("Shared Bomber percentage", 9); await fill("Shared Shooter percentage", 90);
   await user.click(screen.getByRole("button", { name: "Wednesday Cyber Gorilla" }));
-  await user.selectOptions(screen.getByRole("combobox", { name: "Team 1 robot" }), "Synthetic robot");
+  await user.click(within(screen.getByRole("group", { name: "Team 1 robot" })).getByRole("button", { name: /Synthetic robot/ }));
   await user.click(screen.getByRole("button", { name: /Generate Formations/ }));
   const first = await screen.findByRole("article", { name: "Formation 1" });
   expect(screen.getAllByRole("article", { name: /^Formation [1-5]$/ })).toHaveLength(1);
@@ -120,6 +120,7 @@ it("shows actionable validation errors instead of invalid formations", async () 
 it("persists robot assignments and clears them when a robot is removed", async () => {
   const p = completeProfile(); p.teamRobotIds = ["Synthetic robot", null, null];
   const storage = memory([p]); const user = userEvent.setup(); render(<App storage={storage} />); await ready();
+  await user.click(screen.getByRole("button", { name: "Wednesday Cyber Gorilla" }));
   await user.click(screen.getByRole("button", { name: "Player profiles" }));
   await user.click(screen.getByText((_, element) => element?.tagName === "SUMMARY" && !!element.textContent?.startsWith("Synthetic robot")));
   await user.click(screen.getByRole("button", { name: "Remove Synthetic robot" }));
@@ -242,9 +243,12 @@ it("enables robot selection only for Cyber and Warlord across all seven events w
   for (const event of eventData.events) {
     await user.click(screen.getByRole("button", { name: `${event.day} ${event.name}` }));
     const enabled = ["cyber", "warlord"].includes(event.id);
-    expect(screen.queryAllByRole("combobox", { name: /Team [123] robot/ })).toHaveLength(enabled ? 3 : 0);
+    expect(screen.queryAllByRole("group", { name: /Team [123] robot/ })).toHaveLength(enabled ? 3 : 0);
     expect(screen.queryAllByLabelText("Robot reuse setting")).toHaveLength(enabled ? 1 : 0);
-    if (enabled) expect((screen.getByRole("combobox", { name: "Team 1 robot" }) as HTMLSelectElement).value).toBe("Synthetic robot");
+    if (enabled) expect(within(screen.getByRole("group", { name: "Team 1 robot" })).getByRole("button", { name: /Synthetic robot/ }).getAttribute("aria-pressed")).toBe("true");
+    await user.click(screen.getByRole("button", { name: "Player profiles" }));
+    expect(!!screen.queryByRole("heading", { name: "Owned robots" })).toBe(enabled);
+    await user.click(screen.getByRole("button", { name: "Formation generator" }));
     expect(loadProfiles(storage).profiles[0]).toEqual(p);
   }
 });
