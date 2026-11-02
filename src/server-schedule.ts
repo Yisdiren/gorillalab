@@ -13,7 +13,22 @@ export type Cycle = { id:string; startDate:string; order:string[]; confirmed:boo
 export type Calibration = { serverDateTime:string; clientAtSync:number; lastSeenClient:number; invalidated:boolean };
 export type Recurrence = {enabled:boolean;anchorDate:string;intervalDays:number;order:string[]};
 export const defaultRecurrence=():Recurrence=>({enabled:true,anchorDate:"2026-10-26",intervalDays:14,order:[...USUAL_EVENT_ORDER]});
-export type ScheduleSettings = { recurrence:Recurrence; profileId:string; server:number; cycles:Cycle[]; calibration:Calibration|null; clockMode:ClockMode; referenceCalibration:Calibration|null; migrationNotice?:string };
+export type ScheduleSettings = { recurrence:Recurrence; profileId:string; server:number; cycles:Cycle[]; calibration:Calibration|null; clockMode:ClockMode; referenceCalibration:Calibration|null; migrationNotice?:string; legacyOrderReview?:"kept" };
+const LEGACY_EVENT_ORDER = ["space","wise","cyber","primal","armed","treasure","warlord"];
+export function needsOrderReview(settings:ScheduleSettings):boolean {
+  return settings.legacyOrderReview!=="kept" && settings.recurrence.order.length===7 && settings.recurrence.order.every((id,i)=>id===LEGACY_EVENT_ORDER[i]);
+}
+/** No provenance exists for saved defaults. Only an explicit player decision writes. */
+export function resolveOrderReview(storage:Storage,profileId:string,server:number,decision:"update"|"keep",expected:Recurrence):ScheduleSettings {
+  const current=loadScheduleSettings(storage,profileId,server);
+  if(!needsOrderReview(current))return current;
+  if(JSON.stringify(current.recurrence)!==JSON.stringify(expected))throw new Error("Schedule changed since review opened. Reload and review the saved order again.");
+  return updateScheduleSettings(storage,profileId,server,previous=>{
+    if(!needsOrderReview(previous)||JSON.stringify(previous.recurrence)!==JSON.stringify(expected))throw new Error("Schedule changed since review opened. Reload and review the saved order again.");
+    return decision==="keep" ? {...previous,legacyOrderReview:"kept"}
+      : {...previous,recurrence:{...previous.recurrence,order:[...USUAL_EVENT_ORDER]}};
+  });
+}
 const object=(v:unknown):v is Record<string,any>=>!!v&&typeof v==="object"&&!Array.isArray(v);
 const epoch=(v:unknown):v is number=>typeof v==="number"&&Number.isSafeInteger(v)&&v>=0&&v<=8_640_000_000_000_000;
 /** UTC getters are used only as timezone-independent CIVIL calendar arithmetic.
@@ -53,6 +68,7 @@ export function validateSettings(s:unknown):s is ScheduleSettings {
   if(!object(s)||typeof s.profileId!=="string"||!s.profileId||!epoch(s.server)||!Array.isArray(s.cycles)||s.cycles.length>24||!s.cycles.every(validCycle)||new Set(s.cycles.map((c:Cycle)=>c.id)).size!==s.cycles.length||(s.calibration!==null&&!validCalibration(s.calibration)))return false;
   if(!["automatic","manual","reference"].includes(s.clockMode)||(s.referenceCalibration!==null&&!validCalibration(s.referenceCalibration)))return false;
   if(s.migrationNotice!==undefined&&(typeof s.migrationNotice!=="string"||s.migrationNotice.length>300))return false;
+  if(s.legacyOrderReview!==undefined&&s.legacyOrderReview!=="kept")return false;
   try{const r=s.recurrence;if(!object(r)||typeof r.enabled!=="boolean"||!Number.isInteger(r.intervalDays)||r.intervalDays<7||r.intervalDays>366||!validCycle({...exampleCycle(),startDate:r.anchorDate,order:r.order}))return false;}catch{return false;}
 if(new Set(s.cycles.map((c:Cycle)=>c.replacesStartDate??c.startDate)).size!==s.cycles.length)return false;
 const dates=new Set<string>();
