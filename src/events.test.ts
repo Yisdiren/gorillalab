@@ -20,7 +20,7 @@ afterEach(() => vi.unstubAllGlobals());
 it("stores the seven exact guide events, bonuses and starting recommendations", () => {
   expect(eventData.events.map(e => [e.day, e.name, e.startingRatio.bomber, e.startingRatio.shooter])).toEqual([
     ["Monday", "Space Gorilla", 20, 80], ["Tuesday", "Wise Gorilla", 10, 90],
-    ["Wednesday", "Cyber Gorilla", 10, 90], ["Thursday", "Primal Gorilla", 20, 80],
+    ["Wednesday", "Primal Gorilla", 20, 80], ["Thursday", "Cyber Gorilla", 10, 90],
     ["Friday", "Armed Gorilla", 15, 85], ["Saturday", "Treasure Gorilla", 10, 90],
     ["Sunday", "Gorilla Warlord", 10, 90],
   ]);
@@ -162,11 +162,11 @@ it("generates all seven events from percentages alone without assuming Ada's pen
 
 it("keeps all seven exact display names separate from stable event IDs and bonus categories", async () => {
   const { eventDisplayName } = await import("./data/events");
-  const ids = ["space", "wise", "cyber", "primal", "armed", "treasure", "warlord"];
-  const names = ["Space Gorilla", "Wise Gorilla", "Cyber Gorilla", "Primal Gorilla", "Armed Gorilla", "Treasure Gorilla", "Gorilla Warlord"];
+  const ids = ["space", "wise", "primal", "cyber", "armed", "treasure", "warlord"];
+  const names = ["Space Gorilla", "Wise Gorilla", "Primal Gorilla", "Cyber Gorilla", "Armed Gorilla", "Treasure Gorilla", "Gorilla Warlord"];
   expect(eventData.events.map(e => e.id)).toEqual(ids);
   expect(eventData.events.map(e => e.name)).toEqual(names);
   expect(ids.map(eventDisplayName)).toEqual(names);
   expect(eventDisplayName("not-an-event")).toBe("Unknown Gorilla");
-  expect(eventData.events.slice(0, 6).map(e => e.bonuses[0].category)).toEqual(["satellite", "technology", "power-armor", "tome", "hero-equipment", "collection"]);
+  expect(eventData.events.slice(0, 6).map(e => e.bonuses[0].category)).toEqual(["satellite", "technology", "tome", "power-armor", "hero-equipment", "collection"]);
 });

@@ -30,8 +30,8 @@ const catalog = require('../public/robot-portraits.json').robots;
     const team = () => page.getByRole('group', { name: 'Team 1 robot', exact: true });
     const ranger = () => team().getByRole('button', { name: /Ranger/ });
     for (const [label, enabled] of [
-      ['Monday Space Gorilla', false], ['Tuesday Wise Gorilla', false], ['Wednesday Cyber Gorilla', true],
-      ['Thursday Primal Gorilla', false], ['Friday Armed Gorilla', false], ['Saturday Treasure Gorilla', false], ['Sunday Gorilla Warlord', true],
+      ['Monday Space Gorilla', false], ['Tuesday Wise Gorilla', false], ['Wednesday Primal Gorilla', false],
+      ['Thursday Cyber Gorilla', true], ['Friday Armed Gorilla', false], ['Saturday Treasure Gorilla', false], ['Sunday Gorilla Warlord', true],
     ]) {
       await page.getByRole('button', { name: label, exact: true }).click();
       assert.equal(await page.locator('.robot-team').count(), enabled ? 3 : 0, label);
@@ -49,16 +49,22 @@ const catalog = require('../public/robot-portraits.json').robots;
     assert.equal(await page.locator('.robot-editor').count(), 0);
     await page.getByRole('button', { name: /^Stiletto test fixture/ }).click();
     await page.reload();
-    await page.getByRole('button', { name: 'Wednesday Cyber Gorilla', exact: true }).click();
+    await page.getByRole('button', { name: 'Thursday Cyber Gorilla', exact: true }).click();
     assert.equal(await ranger().getAttribute('aria-pressed'), 'true');
+    await page.getByText('Server schedule & 14-day rotation', { exact: true }).click();
+    await page.getByText('Seven-day schedule · automatic rotation', { exact: true }).click();
+    assert.deepEqual(await page.locator('.schedule-cycle li strong').allTextContents(), ['Space Gorilla', 'Wise Gorilla', 'Primal Gorilla', 'Cyber Gorilla', 'Armed Gorilla', 'Treasure Gorilla', 'Gorilla Warlord']);
     mkdirSync('.preview-validation/robots', { recursive: true });
     for (const width of [320, 390, 768, 1440]) {
       await page.setViewportSize({ width, height: 900 });
+      if ((await page.locator('#server-schedule').getAttribute('open')) === null) await page.getByText('Server schedule & 14-day rotation', { exact: true }).click();
+      if (!(await page.locator('.schedule-cycle').isVisible())) await page.getByText('Seven-day schedule · automatic rotation', { exact: true }).click();
       await page.locator('.robot-teams').scrollIntoViewIfNeeded();
       await page.locator('.robot-teams img').evaluateAll(images => Promise.all(images.map(img => img.decode())));
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, `page overflow at ${width}`);
       assert.equal(await page.locator('.robot-team').evaluateAll(nodes => nodes.some(node => node.scrollWidth > node.clientWidth)), false, `selector overflow at ${width}`);
       await page.locator('.robot-teams').screenshot({ path: `.preview-validation/robots/selector-${width}.png` });
+      await page.locator('.schedule-cycle').screenshot({ path: `.preview-validation/robots/schedule-${width}.png` });
       await page.getByRole('button', { name: 'Player profiles', exact: true }).click();
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, `ownership overflow at ${width}`);
       await page.getByRole('button', { name: 'Formation generator', exact: true }).click();

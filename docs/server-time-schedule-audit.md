@@ -7,8 +7,8 @@ scheduled event, canonical name, full Server Time date, ST 00:30 appearance and 
 estimated countdown only when clock calibration and the cycle's confirmation
 permit it. The seven-day calendar and correction controls are collapsed by default.
 
-The usual selector rotation is now Space Monday, Wise Tuesday, Cyber Wednesday,
-Primal Thursday, Armed Friday, Treasure Saturday and Warlord Sunday. IDs and their
+The usual selector rotation is now Space Monday, Wise Tuesday, Primal Wednesday,
+Cyber Thursday, Armed Friday, Treasure Saturday and Warlord Sunday. IDs and their
 bonuses/ratios remain unchanged. Selector weekdays are marked as usual round order,
 not proof that a Gorilla appears every week. Icons are keyed by event ID so reordering
 does not exchange their visual identities. Historical source-order disagreement
@@ -92,7 +92,7 @@ Production:
 - src/ui/ServerSchedule.tsx — panel, live estimated ST, synchronization, schedule
   list and explicit date/order/confirmation controls.
 - src/App.tsx — scoped panel mounting, usual weekday wording, ID-based glyphs.
-- public/gorilla-events.json — Cyber Wednesday / Primal Thursday ordering only;
+- public/gorilla-events.json — Cyber Thursday / Primal Wednesday ordering only;
   canonical IDs, category bonuses, percentage baselines and scoring are retained.
 - src/ui/OptimizationPanel.tsx — contextual display of historical order disagreement;
   no optimizer or ranking calculation changed.

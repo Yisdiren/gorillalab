@@ -52,17 +52,17 @@
       "ratioStatus": "starting-recommendation-not-proven-optimum"
     },
     {
-      "id": "cyber",
+      "id": "primal",
       "day": "Wednesday",
-      "name": "Cyber Gorilla",
+      "name": "Primal Gorilla",
       "startingRatio": {
         "shield": 0,
-        "bomber": 10,
-        "shooter": 90
+        "bomber": 20,
+        "shooter": 80
       },
       "bonuses": [
         {
-          "category": "power-armor",
+          "category": "tome",
           "reportedBoostPercent": 1000,
           "strength": "daily-boost",
           "baseValue": null,
@@ -73,17 +73,17 @@
       "ratioStatus": "starting-recommendation-not-proven-optimum"
     },
     {
-      "id": "primal",
+      "id": "cyber",
       "day": "Thursday",
-      "name": "Primal Gorilla",
+      "name": "Cyber Gorilla",
       "startingRatio": {
         "shield": 0,
-        "bomber": 20,
-        "shooter": 80
+        "bomber": 10,
+        "shooter": 90
       },
       "bonuses": [
         {
-          "category": "tome",
+          "category": "power-armor",
           "reportedBoostPercent": 1000,
           "strength": "daily-boost",
           "baseValue": null,
@@ -191,5 +191,22 @@
       "mechanicsStatus": "unknown",
       "ratioStatus": "starting-recommendation-not-proven-optimum"
     }
-  ]
+  ],
+  "scheduleVerification": {
+    "status": "player-confirmed-current-order",
+    "servers": [
+      248,
+      10004
+    ],
+    "confirmedOrder": [
+      "space",
+      "wise",
+      "primal",
+      "cyber",
+      "armed",
+      "treasure",
+      "warlord"
+    ],
+    "note": "Current in-game order confirmed by the player on two servers; not a permanent game-wide rule."
+  }
 }

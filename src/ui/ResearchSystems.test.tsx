@@ -120,7 +120,7 @@ it("uses all seven display names for stored history and comparison choices witho
   const { saveBattle, emptyBattle, BATTLE_KEY } = await import("../battles");
   const { within } = await import("@testing-library/react");
   const storage = systemStorage(), profile = systemProfile(), user = userEvent.setup();
-  const names = ["Space Gorilla", "Wise Gorilla", "Cyber Gorilla", "Primal Gorilla", "Armed Gorilla", "Treasure Gorilla", "Gorilla Warlord"];
+  const names = ["Space Gorilla", "Wise Gorilla", "Primal Gorilla", "Cyber Gorilla", "Armed Gorilla", "Treasure Gorilla", "Gorilla Warlord"];
   eventData.events.forEach((event, i) => { const battle = emptyBattle(`label-${event.id}`, profile.serverNumber!, event.id); battle.damage = 100 + i; saveBattle(storage, battle); });
   const before = storage.getItem(BATTLE_KEY);
   render(<BattleHistory storage={storage} profile={profile} snapshot={null} />);

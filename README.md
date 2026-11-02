@@ -521,3 +521,5 @@ before public hosting. New preview URLs have separate browser storage: no profil
 or damage records are uploaded or migrated automatically. Private roster audit
 fixtures, browser exports, screenshots and host configuration stay local/ignored.
 See [preview preparation, validation and blockers](docs/vercel-preview-preparation.md).
+
+Current player-confirmed order (Servers 248 and 10004): Monday Space, Tuesday Wise, Wednesday Primal, Thursday Cyber, Friday Armed, Saturday Treasure, Sunday Warlord. This is current evidence, not a permanent game-wide rule. The October 26, 2026 anchor, 14-day active/off-week cycle, fixed UTC-02:00 server time and ST 00:30 appearance remain unchanged. Saved explicit recurrence/cycle overrides are retained; review them in schedule settings if they still use the previous order. Event IDs, profiles, formations and damage history are unchanged.

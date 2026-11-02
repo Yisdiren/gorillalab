@@ -1,7 +1,7 @@
 import { eventDisplayName } from "./data/events";
 import type { Storage } from "./profiles";
 
-export const USUAL_EVENT_ORDER = ["space","wise","cyber","primal","armed","treasure","warlord"] as const;
+export const USUAL_EVENT_ORDER = ["space","wise","primal","cyber","armed","treasure","warlord"] as const;
 export const SCHEDULE_KEY = "gorillalab.server-schedules.v1";
 export const DAY_MS = 86_400_000;
 export const CLOCK_MAX_AGE_MS = DAY_MS; // Application freshness policy, not a game rule.

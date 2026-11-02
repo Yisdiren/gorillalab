@@ -7,9 +7,9 @@ const cycle=()=>[exampleCycle()];
 const client=Date.parse("2026-10-24T12:00:00Z"); // Synthetic client instant, NOT a game UTC offset.
 const oldTZ=process.env.TZ;
 afterEach(()=>{if(oldTZ===undefined)delete process.env.TZ;else process.env.TZ=oldTZ;});
-it("maps only the supplied Oct 26–Nov 1 cycle in ST and puts Cyber before Primal",()=>{
+it("maps only the supplied Oct 26–Nov 1 cycle in ST and puts Primal before Cyber",()=>{
  const rows=cycleOccurrences(exampleCycle());
- expect(rows.map(r=>[r.date,r.eventId])).toEqual([["2026-10-26","space"],["2026-10-27","wise"],["2026-10-28","cyber"],["2026-10-29","primal"],["2026-10-30","armed"],["2026-10-31","treasure"],["2026-11-01","warlord"]]);
+ expect(rows.map(r=>[r.date,r.eventId])).toEqual([["2026-10-26","space"],["2026-10-27","wise"],["2026-10-28","primal"],["2026-10-29","cyber"],["2026-10-30","armed"],["2026-10-31","treasure"],["2026-11-01","warlord"]]);
  expect(rows.every(r=>formatServerClock(r.appearance).endsWith("00:30:00 ST"))).toBe(true);
  expect(serverWeekday(rows[0].date)).toBe("Monday");expect(rows[6].name).toBe("Gorilla Warlord");
 });
@@ -20,8 +20,8 @@ it("resets the ST day at midnight and handles 00:00–00:29 without claiming app
 });
 it("at exactly ST 00:30 marks the scheduled threshold and counts separately toward the next day",()=>{
  const state=scheduleState(cycle(),axis("2026-10-28T00:30:00"));
- expect(state.phase).toBe("appearance-reached");expect(state.current?.eventId).toBe("cyber");expect(state.next?.eventId).toBe("primal");expect(state.countdownSeconds).toBe(86400);
- const after=scheduleState(cycle(),axis("2026-10-28T22:00:00"));expect(after.phase).toBe("appearance-reached");expect(after.current?.eventId).toBe("cyber");
+ expect(state.phase).toBe("appearance-reached");expect(state.current?.eventId).toBe("primal");expect(state.next?.eventId).toBe("cyber");expect(state.countdownSeconds).toBe(86400);
+ const after=scheduleState(cycle(),axis("2026-10-28T22:00:00"));expect(after.phase).toBe("appearance-reached");expect(after.current?.eventId).toBe("primal");
 });
 it("handles week/month/leap/year rollovers and rejects impossible civil dates",()=>{
  expect(addServerDays("2026-10-31",1)).toBe("2026-11-01");expect(serverWeekday("2026-11-01")).toBe("Sunday");
@@ -59,7 +59,7 @@ it("isolates settings by profile AND server and preserves other storage keys",()
 });
 it("supports explicit changed orders, inactive cycles and unconfirmed future dates",()=>{
  const order=[...USUAL_EVENT_ORDER];[order[2],order[3]]=[order[3],order[2]];
- const changed={...exampleCycle(),order};expect(cycleOccurrences(changed)[2].eventId).toBe("primal");
+ const changed={...exampleCycle(),order};expect(cycleOccurrences(changed)[2].eventId).toBe("cyber");
  const next={...exampleCycle(),id:"future",startDate:"2026-11-09",confirmed:false,source:"player-configured" as const};
  const planned=scheduleState([next],axis("2026-11-08T12:00:00"));expect(planned.next?.confirmed).toBe(false);expect(planned.countdownSeconds).toBeNull();
  expect(scheduleState([{...next,enabled:false}],axis("2026-11-08T12:00:00")).next).toBeNull();
