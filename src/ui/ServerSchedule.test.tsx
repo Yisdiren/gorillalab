@@ -62,7 +62,7 @@ it("shows the exact seven-day ST schedule with the evidence-backed fixed offset"
  const user=userEvent.setup();render(<ServerSchedule profile={systemProfile()} storage={systemStorage()} now={()=>client} monotonic={()=>0} />);
  await user.click(screen.getByText("Seven-day schedule · automatic rotation"));
  const list=screen.getByRole("list");expect(within(list).getAllByRole("listitem").map(n=>n.textContent)).toEqual([
- "Monday · 2026-10-26Space GorillaST 00:30","Tuesday · 2026-10-27Wise GorillaST 00:30","Wednesday · 2026-10-28Cyber GorillaST 00:30","Thursday · 2026-10-29Primal GorillaST 00:30","Friday · 2026-10-30Armed GorillaST 00:30","Saturday · 2026-10-31Treasure GorillaST 00:30","Sunday · 2026-11-01Gorilla WarlordST 00:30"]);
+ "Monday · 2026-10-26Space GorillaST 00:30","Tuesday · 2026-10-27Wise GorillaST 00:30","Wednesday · 2026-10-28Primal GorillaST 00:30","Thursday · 2026-10-29Cyber GorillaST 00:30","Friday · 2026-10-30Armed GorillaST 00:30","Saturday · 2026-10-31Treasure GorillaST 00:30","Sunday · 2026-11-01Gorilla WarlordST 00:30"]);
  expect(screen.getByText(/UTC−02:00 is the current evidence-backed default/)).toBeTruthy();expect(screen.getByRole("timer")).toBeTruthy();
 });
 it("does not overwrite malformed settings and disables persistence without a profile/server",async()=>{
@@ -94,9 +94,9 @@ it("lets players save a delayed event exception and displays its actual ST time"
 });
 it("keeps manual-cycle order separate when saving recurrence preferences",async()=>{
  const storage=systemStorage(),profile=systemProfile(),user=userEvent.setup();render(<ServerSchedule profile={profile} storage={storage} now={()=>client} monotonic={()=>0} />);
- await user.click(screen.getByRole("button",{name:"Configure cycle dates / order"}));await user.selectOptions(screen.getByLabelText("Day 3 event"),"primal");await user.selectOptions(screen.getByLabelText("Day 4 event"),"cyber");
- await user.click(screen.getByText("Recurring schedule settings"));await user.click(screen.getByRole("button",{name:"Save recurrence settings"}));expect(loadScheduleSettings(storage,profile.id,profile.serverNumber!).recurrence.order[2]).toBe("cyber");
- await user.selectOptions(screen.getByLabelText("Recurring day 3 event"),"primal");await user.selectOptions(screen.getByLabelText("Recurring day 4 event"),"cyber");await user.click(screen.getByRole("button",{name:"Save recurrence settings"}));expect(loadScheduleSettings(storage,profile.id,profile.serverNumber!).recurrence.order[2]).toBe("primal");
+ await user.click(screen.getByRole("button",{name:"Configure cycle dates / order"}));await user.selectOptions(screen.getByLabelText("Day 3 event"),"cyber");await user.selectOptions(screen.getByLabelText("Day 4 event"),"primal");
+ await user.click(screen.getByText("Recurring schedule settings"));await user.click(screen.getByRole("button",{name:"Save recurrence settings"}));expect(loadScheduleSettings(storage,profile.id,profile.serverNumber!).recurrence.order[2]).toBe("primal");
+ await user.selectOptions(screen.getByLabelText("Recurring day 3 event"),"cyber");await user.selectOptions(screen.getByLabelText("Recurring day 4 event"),"primal");await user.click(screen.getByRole("button",{name:"Save recurrence settings"}));expect(loadScheduleSettings(storage,profile.id,profile.serverNumber!).recurrence.order[2]).toBe("cyber");
 });
 it("does not crash the cycle view when a supported date belongs to an adjacent-year cycle",async()=>{
  const user=userEvent.setup();render(<ServerSchedule profile={systemProfile()} storage={systemStorage()} now={()=>client} monotonic={()=>0} />);await user.click(screen.getByText("Seven-day schedule · automatic rotation"));
@@ -104,7 +104,7 @@ it("does not crash the cycle view when a supported date belongs to an adjacent-y
  fireEvent.input(screen.getByLabelText("View cycle containing ST date"),{target:{value:"2199-12-31"}});expect(screen.getByRole("list").children.length).toBe(7);
 });
 it("shows and navigates migrated off-cadence manual cycles when recurrence is disabled",async()=>{
- const storage=systemStorage(),profile=systemProfile(),user=userEvent.setup();const base={order:["space","wise","cyber","primal","armed","treasure","warlord"],enabled:true,confirmed:true,source:"player-configured"};
+ const storage=systemStorage(),profile=systemProfile(),user=userEvent.setup();const base={order:["space","wise","primal","cyber","armed","treasure","warlord"],enabled:true,confirmed:true,source:"player-configured"};
  storage.setItem(SCHEDULE_KEY,JSON.stringify({version:1,entries:[{profileId:profile.id,server:profile.serverNumber,calibration:null,cycles:[{...base,id:"one",startDate:"2026-10-27"},{...base,id:"two",startDate:"2026-11-24"}]}]}));render(<ServerSchedule profile={profile} storage={storage} now={()=>client} monotonic={()=>0} />);
  expect(screen.getByText(/Legacy manual dates overlap/)).toBeTruthy();await user.click(screen.getByText("Seven-day schedule · automatic rotation"));expect(screen.getByText("2026-10-27 cycle")).toBeTruthy();await user.click(screen.getByRole("button",{name:"Next Cycle"}));expect(screen.getByText("2026-11-24 cycle")).toBeTruthy();await user.click(screen.getByRole("button",{name:"Previous Cycle"}));expect(screen.getByText("2026-10-27 cycle")).toBeTruthy();
 });

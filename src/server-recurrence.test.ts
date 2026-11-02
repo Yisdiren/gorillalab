@@ -5,7 +5,7 @@ const settings=()=>defaultSettings("p",248);
 const at=(date:string,time="12:00:00",s=settings())=>scheduleState(s,parseServerCivil(date+"T"+time));
 it.each(["2026-10-26","2026-11-09","2026-11-23","2026-12-07","2026-12-21"])("calculates seven consecutive days from %s",start=>{
  const s=settings(),c=resolvedCycle(s,start);expect(cycleStartForDate(s.recurrence,addServerDays(start,6))).toBe(start);
- expect(cycleOccurrences(c).map(o=>o.eventId)).toEqual(["space","wise","cyber","primal","armed","treasure","warlord"]);
+ expect(cycleOccurrences(c).map(o=>o.eventId)).toEqual(["space","wise","primal","cyber","armed","treasure","warlord"]);
  for(let i=0;i<7;i++)expect(at(addServerDays(start,i)).today?.eventId).toBe(c.order[i]);
 });
 it.each([2,3,4,5,6,7,8])("November %i is an off-week day with no active-day event",day=>{

@@ -46,7 +46,7 @@ Previously saved custom robot names remain available with fallback portraits.
   actions remain available; custom names can be added under a disclosure.
 - Assignment toggles edit only the existing `teamRobotIds`. Clearing an
   assignment never removes ownership, levels, cores, or upgrades.
-- Ownership and team-selection controls appear only for Cyber (Wednesday) and
+- Ownership and team-selection controls appear only for Cyber (Thursday) and
   Warlord (Sunday). The other five events retain saved robot data while hiding
   controls. Existing scoring/event exclusion logic remains unchanged.
 - No new storage key or schema version. No startup writes or resets. Existing

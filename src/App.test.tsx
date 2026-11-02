@@ -88,7 +88,7 @@ it("searches ownership, edits progression and eligibility, and saves without cha
 it("renders one recommendation and expandable real engine alternatives with all three teams", async () => {
   const storage = memory([completeProfile()]); const user = userEvent.setup(); render(<App storage={storage} />); await ready();
   await fill("Shared Shieldbearer percentage", 1); await fill("Shared Bomber percentage", 9); await fill("Shared Shooter percentage", 90);
-  await user.click(screen.getByRole("button", { name: "Wednesday Cyber Gorilla" }));
+  await user.click(screen.getByRole("button", { name: "Thursday Cyber Gorilla" }));
   await user.click(within(screen.getByRole("group", { name: "Team 1 robot" })).getByRole("button", { name: /Synthetic robot/ }));
   await user.click(screen.getByRole("button", { name: /Generate Formations/ }));
   const first = await screen.findByRole("article", { name: "Formation 1" });
@@ -120,7 +120,7 @@ it("shows actionable validation errors instead of invalid formations", async () 
 it("persists robot assignments and clears them when a robot is removed", async () => {
   const p = completeProfile(); p.teamRobotIds = ["Synthetic robot", null, null];
   const storage = memory([p]); const user = userEvent.setup(); render(<App storage={storage} />); await ready();
-  await user.click(screen.getByRole("button", { name: "Wednesday Cyber Gorilla" }));
+  await user.click(screen.getByRole("button", { name: "Thursday Cyber Gorilla" }));
   await user.click(screen.getByRole("button", { name: "Player profiles" }));
   await user.click(screen.getByText((_, element) => element?.tagName === "SUMMARY" && !!element.textContent?.startsWith("Synthetic robot")));
   await user.click(screen.getByRole("button", { name: "Remove Synthetic robot" }));
@@ -286,7 +286,7 @@ it("makes unknown season eligibility visible and includes owned guide-class Bomb
 
 it("uses the exact seven visible event names and separates boosted categories", async () => {
   const user = userEvent.setup(); render(<App storage={memory()} />); await ready();
-  const names = ["Space Gorilla", "Wise Gorilla", "Cyber Gorilla", "Primal Gorilla", "Armed Gorilla", "Treasure Gorilla", "Gorilla Warlord"];
+  const names = ["Space Gorilla", "Wise Gorilla", "Primal Gorilla", "Cyber Gorilla", "Armed Gorilla", "Treasure Gorilla", "Gorilla Warlord"];
   const selectors = within(screen.getByRole("group", { name: "Gorilla event" })).getAllByRole("button");
   expect(selectors.map(b => b.querySelector("strong")?.textContent)).toEqual(names);
   for (let i = 0; i < names.length; i++) {

@@ -133,7 +133,7 @@ it("renders compact ratios without bars and keeps stars beside each hero identit
 });
 
 it("renders canonical event names for legacy formation labels in all seven events", () => {
-  const data = snapshot(), names = ["Space Gorilla", "Wise Gorilla", "Cyber Gorilla", "Primal Gorilla", "Armed Gorilla", "Treasure Gorilla", "Gorilla Warlord"];
+  const data = snapshot(), names = ["Space Gorilla", "Wise Gorilla", "Primal Gorilla", "Cyber Gorilla", "Armed Gorilla", "Treasure Gorilla", "Gorilla Warlord"];
   const { rerender } = render(<FormationResults snapshot={null} />);
   eventData.events.forEach((event, i) => {
     const legacy = { ...data, formations: data.formations.map(f => ({ ...f, event: { ...event, name: "Legacy category-appended title" } })) };
